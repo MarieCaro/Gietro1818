@@ -1,12 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html lang="fr">
+    <head>
+       <meta charset="UTF-8">
+        <title>Giétro 1818 {%block titre %}{%endblock%}</title>
+    </head>
     <body>
-        <div>Gietro: <a href="/index">Home</a></div>
-        <hr>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+          <a class="navbar-brand" href="{{ url_for('accueil')}}">Gietro1818</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="{{url_for('accueil')}}">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('course')}}">Course contre la montre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('victime')}}">Victimes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('secours')}}">Secours et reconstruction</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('bienfaisance')}}">Bienfaisance et generosite</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('ombre')}}">Ombre au tableau</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('souvenir')}}">Souvenir</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0" action="{{url_for('recherche')}}" method="GET">
+            <input class="form-control mr-sm-2"  name="keyword" type="search" placeholder="Recherche rapide" aria-label="Recherche">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
+          </form>
+        </div>
+</nav>
+
         {% block content %}{% endblock %}
     </body>
 </html>
