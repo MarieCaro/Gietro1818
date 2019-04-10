@@ -1,6 +1,7 @@
 from flask import render_template, url_for
 from werkzeug.urls import url_parse
 from app import app
+from .models import Personne, Lieu, Type
 
 
 @app.route('/')
@@ -15,7 +16,8 @@ def course():
 
 @app.route('/victime')
 def victime():
-    return render_template('pages/victime.html')
+    resultats = Personne.query.all()
+    return render_template('pages/victime.html', resultats=resultats)
 
 
 @app.route('/bienfaisance')
@@ -42,6 +44,11 @@ def approfondir():
 def recherche():
     return render_template('pages/recherche.html')
 
+
 @app.route('/secours')
 def secours():
     return render_template('pages/secours.html')
+
+@app.route('/resultats')
+def resultats():
+    return render_template('pages/resultat.html')
