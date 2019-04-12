@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block titre %}| {{titre}}{%endblock%}
+
+{% block corps %}
+
+
+    <h1>{{titre}}</h1>
+    {% if reponse %}
+        <p>Il y a {{reponse.total}} résultat(s) qui répond(ent) à votre requête :</p>
+        <ul>
+            {% for personne in reponse.items %}
+                <li>
+                    {{personne.nom}}
+            </li>
+            {% endfor %}
+
+        </ul>
+    {%else%}
+<p>Il n'y a pas de résultats.</p>
+
+    {% endif %}
+{% endblock %}
