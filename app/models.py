@@ -32,4 +32,5 @@ class Personne(db.Model):
     mission_debacle = db.Column(db.TEXT)
     correspondance = db.Column(db.TEXT)
     wikipedia = db.Column(db.TEXT)
+    dhs = db.Column(db.TEXT)
     type = db.relationship("Type")
