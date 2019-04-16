@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+		<div class = "container" id="formulaire-recherche-avancee" style="padding-top: 5%; padding-bottom: 5%">
+			<h2>Formulaire de recherche avancée</h2>
+			<form action="{{url_for('resultatavance')}}" method="GET" id="recherche_form">
+
+                <!-- Recherche plein texte = à la recherche de la barre de nav -->
+                <div class="form-group">
+					<label>Recherche plein texte dans tous les champs des notices</label>
+					<input class="form-control" type="search" name="motclef" placeholder="Termes à rechercher">
+				</div>
+                <!-- Recherche par nom/prenom... -->
+                <div class="form-group">
+					<label>Recherche du nom</label>
+					<input class="form-control" type="search" name="nom" placeholder="Nom">
+				</div>
+                <div class="form-group">
+					<label>Recherche du prenom</label>
+					<input class="form-control" type="search" name="prenom" placeholder="Prénom">
+				</div>
+
+                <div class="form-group">
+					<label>Recherche du lieu de naissance</label>
+					<input class="form-control" type="search" name="de" placeholder="Lieu de naissance">
+				</div>
+                <div class="form-group">
+					<label>Recherche du lieu de domicile</label>
+					<input class="form-control" type="search" name="domicile" placeholder="Lieu de domicile">
+				</div>
+                <div class="form-group">
+					<label>Recherche du village</label>
+					<input class="form-control" type="search" name="lieu" placeholder="Village">
+				</div>
+
+                <!--dropdown pour les 4 rôles possibles lors de la catastrophe -->
+				<div class="form-group">
+					<label>Catégorie</label>
+					<select class="form-control" name="role">
+                        <option value="all">Sélectionner une valeur</option>
+						{% for cat in types %}
+                   			<option value="{{cat.type_label}}">{{cat.type_label}}</option>
+               			{% endfor %}
+					</select>
+				</div>
+
+				<button type="submit" class="btn btn-info btn-lg btn-responsive" id="search">Rechercher</button>
+            </form>
+        </div>
+
+
+
+            {% endblock %}

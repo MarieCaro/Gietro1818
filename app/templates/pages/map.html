@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS=false; L_NO_TOUCH=false; L_DISABLE_3D=false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.4.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>#map_880ba78eef0442b99ada0527b7572bed {
+        position: relative;
+        width: 100.0%;
+        height: 100.0%;
+        left: 0.0%;
+        top: 0.0%;
+        }
+    </style>
+</head>
+<body>    
+    
+    <div class="folium-map" id="map_880ba78eef0442b99ada0527b7572bed" ></div>
+</body>
+<script>    
+    
+    
+        var bounds = null;
+    
+
+    var map_880ba78eef0442b99ada0527b7572bed = L.map(
+        'map_880ba78eef0442b99ada0527b7572bed', {
+        center: [46.072217, 7.217847],
+        zoom: 12,
+        maxBounds: bounds,
+        layers: [],
+        worldCopyJump: false,
+        crs: L.CRS.EPSG3857,
+        zoomControl: true,
+        });
+
+
+    
+    var tile_layer_4511785ce2854968bb1b9cea9af41f0a = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+        "attribution": null,
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 18,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+}).addTo(map_880ba78eef0442b99ada0527b7572bed);
+    
+        var marker_4cf9572ddbb341aa80814b351c31e71f = L.marker(
+            [46.072217, 7.217847],
+            {
+                icon: new L.Icon.Default(),
+                }
+            ).addTo(map_880ba78eef0442b99ada0527b7572bed);
+        
+    
+
+                var icon_e061933d7aca4ea6b043ecf29f7ae06b = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'red',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_4cf9572ddbb341aa80814b351c31e71f.setIcon(icon_e061933d7aca4ea6b043ecf29f7ae06b);
+            
+    
+            var popup_9e370d5a65224ee199053fed5b830762 = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_2a0648a9aa6d44a393a394a0c205c706 = $(`<div id="html_2a0648a9aa6d44a393a394a0c205c706" style="width: 100.0%; height: 100.0%;">Lieu, dégâts</div>`)[0];
+                popup_9e370d5a65224ee199053fed5b830762.setContent(html_2a0648a9aa6d44a393a394a0c205c706);
+            
+
+            marker_4cf9572ddbb341aa80814b351c31e71f.bindPopup(popup_9e370d5a65224ee199053fed5b830762)
+            ;
+
+            
+        
+    
+        var marker_72392a31fa994823b5658ff9f1713e56 = L.marker(
+            [46.082217, 7.217847],
+            {
+                icon: new L.Icon.Default(),
+                }
+            ).addTo(map_880ba78eef0442b99ada0527b7572bed);
+        
+    
+
+                var icon_05eba1bfd4b24a39b4a0120f5c6be99a = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'red',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_72392a31fa994823b5658ff9f1713e56.setIcon(icon_05eba1bfd4b24a39b4a0120f5c6be99a);
+            
+    
+            var popup_d364daff93e447e3b14f48fa1371d42c = L.popup({maxWidth: '100%'
+            
+            });
+
+            
+                var html_d0ace09b7cb740a9b096501708a56151 = $(`<div id="html_d0ace09b7cb740a9b096501708a56151" style="width: 100.0%; height: 100.0%;">Lieu, dégâts</div>`)[0];
+                popup_d364daff93e447e3b14f48fa1371d42c.setContent(html_d0ace09b7cb740a9b096501708a56151);
+            
+
+            marker_72392a31fa994823b5658ff9f1713e56.bindPopup(popup_d364daff93e447e3b14f48fa1371d42c)
+            ;
+
+            
+        
+</script>

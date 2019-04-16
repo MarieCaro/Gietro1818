@@ -24,7 +24,7 @@ différentes requêtes via des url_for (disséminées notamment dans la page che
                          {% if noticep.de != None %}
                             <dt>Originaire de</dt><dd>{{noticep.domicile.lieu.label}}</dd>
                          {% else %}
-                            <dt>Domicile</dt><dd>Inconnu</dd>
+                            <dt>De</dt><dd>Inconnu</dd>
                          {% endif %}
                          {% if noticep.travail != None %}
                             <dt>Travail effectué au glacier</dt><dd>{{noticep.travail}}</dd>

@@ -1,26 +1,23 @@
-{% extends "base.html" %}
+{%extends "base.html"%}
 
-{%block titre %}| {{titre}}{%endblock%}
 {% block content %}
+{% if resultats %}
+    <p>Il y a {{resultats.total}} résultat(s) qui répond(ent) à votre requête :
 
-{% if results %}
-    <p>Il y a {{results.total}} résultat(s) qui répond(ent) à votre requête :
-
-        {% for personne in results.items %}
+        {% for personne in resultats.items %}
             <ul>
                 <li><a href="{{url_for('notice', personne_id=personne.id)}}"> {{personne.nom}}, {{personne.prenom}}</a></li>
             </ul>
         {% endfor %}</p>
-
    <nav aria-label="research-pagination">
       <ul class="pagination">
-        {% for page in results.iter_pages() %}
+        {% for page in resultats.iter_pages() %}
             {% if page %}
-              {% if page != results.page %}
+              {% if page != resultats.page %}
                 <li class="page-item">
                 <!-- Il faut déclarer dans notre url_for la page où l'on affiche les résultats, mais également toutes les variables qui ont été récoltées via la fonction .request dans notre
                 définition de fonction, similaire à ce que nous avions fait en instanciation de la fonction.-->
-                    <a class="page-link" href="{{ url_for('search_results', resultats=resultats, titre=titre, motclef=motclef, nom=nom,
+                    <a class="page-link" href="{{ url_for('resultatavance', resultats=resultats, titre=titre, motclef=motclef, nom=nom,
                            prenom=prenom, de=de, domicile=domicile, role=role, page=page)}}">{{page}}</a>
                 </li>
               {% else %}
@@ -36,13 +33,11 @@
         {%- endfor %}
       </ul>
 </nav>
-
 {%else%}
-    <p>Il n'y a pas de résultats, êtes-vous sur de l'orthographe?</p>
+    <p>Il n'y a pas de résultats.</p>
 {%endif%}
-
 <div class = "container" style="padding-bottom: 5%; text-align:center">
-    <a class="btn btn-primary" href="{{ url_for('rechercheavancee') }}">Faire une recherche avancée</a>
+    <a class="btn btn-primary" href="{{ url_for('rechercheavancee') }}">Faire une nouvelle recherche</a>
 </div>
 
 {% endblock %}
