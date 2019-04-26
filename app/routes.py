@@ -17,8 +17,7 @@ def course():
 
 @app.route('/victime')
 def victime():
-    resultats = Personne.query.all()
-    return render_template('pages/victime.html', resultats=resultats)
+    return render_template('pages/victime.html')
 
 
 @app.route('/bienfaisance')
@@ -51,39 +50,6 @@ def secours():
     return render_template('pages/secours.html')
 
 
-@app.route('/resultats')
-def search_results():
-    motclef = request.args.get("keyword", None)
-
-    page = request.args.get("page", 1)
-    if isinstance(page, str) and page.isdigit():
-        page = int(page)
-    else:
-        page = 1
-
-    results = []
-    titre = "Recherche"
-    if motclef:
-        results = Personne.query.filter(or_(
-            Personne.nom.like("%{}%".format(motclef)),
-            Personne.prenom.like("%{}%".format(motclef)),
-            Personne.age.like("%{}%".format(motclef)),
-            Personne.travail.like("%{}%".format(motclef)),
-            Personne.fonction.like("%{}%".format(motclef)),
-            Personne.donnees_biographiques.like("%{}%".format(motclef)),
-            Personne.informations_complementaires.like("%{}%".format(motclef)),
-            Personne.levee_de_corps.like("%{}%".format(motclef)),
-            Personne.mission_debacle.like("%{}%".format(motclef)),
-        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
-        titre = "Résultat pour la recherche '" + motclef + "'"
-
-    return render_template(
-        "pages/resultat.html",
-        results=results,
-        titre=titre,
-        keyword=motclef)
-
-
 @app.route("/notice/<int:personne_id>")
 def notice(personne_id):
     noticep = Personne.query.get(personne_id)
@@ -101,21 +67,42 @@ def rechercheavancee():
     return render_template('pages/rechercheavancee.html', types=types)
 
 
+@app.route('/resultats')
+def search_results():
+
+    motclef = request.args.get("motclef", None)
+    page = request.args.get("page", 1, type=int)
+
+    results = []
+    titre = "Recherche"
+
+    if motclef:
+        results = Personne.query.filter(or_(
+            Personne.nom.like("%{}%".format(motclef)),
+            Personne.prenom.like("%{}%".format(motclef)),
+            Personne.age.like("%{}%".format(motclef)),
+            Personne.travail.like("%{}%".format(motclef)),
+            Personne.fonction.like("%{}%".format(motclef)),
+            Personne.donnees_biographiques.like("%{}%".format(motclef)),
+            Personne.informations_complementaires.like("%{}%".format(motclef)),
+            Personne.levee_de_corps.like("%{}%".format(motclef)),
+            Personne.mission_debacle.like("%{}%".format(motclef)),
+        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
+        titre = "Résultat"
+
+    return render_template("pages/resultat.html", results=results, titre=titre, motclef=motclef)
+
+
 @app.route('/resultatavance')
 def resultatavance():
-    # on récupère les valeurs de recherche
+
     motclef = request.args.get("motclef", None)
     nom = request.args.get("nom", None)
     prenom = request.args.get("prenom", None)
     de = request.args.get("de", None)
     domicile = request.args.get("domicile", None)
     role = request.args.get("role", None)
-
-    page = request.args.get("page", 1)
-    if isinstance(page, str) and page.isdigit():
-        page = int(page)
-    else:
-        page = 1
+    page = request.args.get("page", 1, type=int)
 
     resultats = []
 
@@ -154,7 +141,7 @@ def resultatavance():
 
     if role and role != "all":
         resultats = Personne.query.filter(
-            Personne.type_id.any(Type.type_label == role)).order_by(Personne.nom.asc()).paginate(
+            Personne.type.has(Type.type_label == role)).order_by(Personne.nom.asc()).paginate(
             page=page, per_page=RESULTATS_PAR_PAGE)
 
     titre = "Résultats"
