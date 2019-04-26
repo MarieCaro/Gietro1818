@@ -1,43 +1,97 @@
 <html lang="fr">
     <head>
-       <meta charset="UTF-8">
-        <title>Giétro 1818 {%block titre %}{%endblock%}</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Giétro 1818 {%block titre %}{%endblock%}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+  {% include "partials/css.html" %}
+        {% include "partials/metadata.html" %}
+
     </head>
+
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
-          <a class="navbar-brand" href="{{ url_for('accueil')}}">Gietro1818</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="{{url_for('accueil')}}">Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('course')}}">Course contre la montre</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('victime')}}">Victimes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('secours')}}">Secours et reconstruction</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('bienfaisance')}}">Bienfaisance et generosite</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('ombre')}}">Ombre au tableau</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url_for('souvenir')}}">Souvenir</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0" action="{{url_for('recherche')}}" method="GET">
-            <input class="form-control mr-sm-2"  name="keyword" type="search" placeholder="Recherche rapide" aria-label="Recherche">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Chercher</button>
-          </form>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('accueil')}}">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('course')}}">Course contre la montre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('victime')}}">Victimes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('secours')}}">Secours et reconstruction</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('bienfaisance')}}">Bienfaisance et générosite</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('ombre')}}">Ombre au tableau</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('rechercheavancee')}}">Recherche avancée</a>
+                </li>
+                <form class="form-inline my-2 my-lg-0" action="{{url_for('search_results')}}" method="GET">
+                <input class="form-control mr-sm-2"  name="motclef" type="search" placeholder="Recherche rapide" aria-label="Recherche">
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Chercher</button>
+                </form>
+
+
+            </ul>
         </div>
+    </div>
 </nav>
+<hr class="my-4">
+<!-- Page individuelle-->
 
-        {% block content %}{% endblock %}
+{% block content %}{% endblock %}
+
+<!--- Pied de page -->
+
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <img>
+                    <hr class="light">
+                    <p>Rue de Lausanne 45</p>
+                    <p>1950 Sion</p>
+                    <p>027 606 46 00</p>
+                    <p>archives@admin.vs.ch</p>
+                </div>
+                <div class="col-md-6">
+                    <img>
+                    <hr class="light">
+                    <p>Chemin de l'Eglise 13</p>
+                    <p>1934 Le Châbles</p>
+                    <p>027 776 15 25</p>
+                    <p>musee@bagnes.ch </p>
+                </div>
+                <div class=""col-12>
+                    <hr class="light">
+                    <h5>&copy;??</h5>
+
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
     </body>
 </html>
