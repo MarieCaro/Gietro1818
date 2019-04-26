@@ -1,48 +1,34 @@
 {% extends "base.html" %}
-
 {%block titre %}| {{titre}}{%endblock%}
-{% block content %}
 
+{% block content %}
 {% if results %}
-    <p>Il y a {{results.total}} résultat(s) qui répond(ent) à votre requête :
+
+    <p>Il y a {{results.total}} résultats qui répondent à votre requête</p>
 
         {% for personne in results.items %}
             <ul>
                 <li><a href="{{url_for('notice', personne_id=personne.id)}}"> {{personne.nom}}, {{personne.prenom}}</a></li>
             </ul>
-        {% endfor %}</p>
+        {% endfor %}
 
-   <nav aria-label="research-pagination">
-      <ul class="pagination">
-        {% for page in results.iter_pages() %}
-            {% if page %}
-              {% if page != results.page %}
-                <li class="page-item">
-                <!-- Il faut déclarer dans notre url_for la page où l'on affiche les résultats, mais également toutes les variables qui ont été récoltées via la fonction .request dans notre
-                définition de fonction, similaire à ce que nous avions fait en instanciation de la fonction.-->
-                    <a class="page-link" href="{{ url_for('search_results', resultats=resultats, titre=titre, motclef=motclef, nom=nom,
-                           prenom=prenom, de=de, domicile=domicile, role=role, page=page)}}">{{page}}</a>
-                </li>
-              {% else %}
-                <li class="page-item active disabled">
-                  <a class="page-link">{{page}} <span class="sr-only">(actuelle)</span></a>
-                </li>
-              {% endif %}
-            {% else %}
-                <li class="page-item disabled">
-                  <a class="page-link">...</a>
-                </li>
+    <nav aria-label="pagination" class="pagination">
+
+        {% for page_num in results.iter_pages() %}
+            {% if page_num %}
+                <a class = "btn btn-outline-info mb-4 " href="{{url_for('search_results', page=page_num, motclef=motclef,
+                results=results, title=title)}}">{{page_num}}</a>
             {% endif %}
-        {%- endfor %}
-      </ul>
-</nav>
+        {% endfor %}
+    </nav>
 
 {%else%}
-    <p>Il n'y a pas de résultats, êtes-vous sur de l'orthographe?</p>
+
+    <p>Il n'y a pas de résultats, êtes-vous sûr de l'orthographe?</p>
+
 {%endif%}
 
-<div class = "container" style="padding-bottom: 5%; text-align:center">
+<div class= "container" style="padding-bottom: 5%; text-align:center">
     <a class="btn btn-primary" href="{{ url_for('rechercheavancee') }}">Faire une recherche avancée</a>
 </div>
-
 {% endblock %}
