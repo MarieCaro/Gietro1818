@@ -1,22 +1,24 @@
 {% extends "base.html" %}
 
-{%block titre %}Accueil{%endblock%}
+{%block titre %} | Accueil{%endblock%}
 {% block content %}
-    <div style="text-align: center">
-        <p class="lead text-muted container">Debacle du Gietro
-            <br>Archives de l'Etat du Valais et Musée de Bagnes
-            <br/> Bienvenue sur la page d'accueil !</p>
-    </div>
+  <a href="{{url_for('carte')}}" target="blank"> Map des dégats</a>
+
+<div class="container-fluid">
+<p>A l'occasion du 200<sup>ème</sup> anniversaire de la débâcle du Giétro, les Archives de l'Etat du Valais et le service de la culture de la commune de Bagnes ont décidé d'unir leurs ressources pour mettre en lumière cette
+        catastrophe qui coûta la vie à 36 personnes.</p>
+    <p>Deux livres ont parus chez <a href="https://www.faimdesiecle.ch/" target="_blank">Faim de siècle</a>. Le premier, <i>Giétro 1818. La véritable histoire</i> a été publié en 2018. Christine Payont et Arnaud Meilland y racontent le déroulement de la débâcle et établissent la manière dont les évenements se sont déroulés.
+        Le second tome <i>Giétro 1818. Une histoire vraie</i> est paru en 2019. Le travail a été dirigé par Mélanie Hugon-Duc et le livre traite de l'impact de la catastrophe et de la manière dont elle s'est transmise.</p>
+    <p>Nous tirons profit des nouvelles technologies pour vous proposer une approche interactive du premier volume.</p>
+</div>
 
 
-    <div style="text-align: center">
-        <p class="">Réalisé à l'occasion des 200 ans de la debacle du Gietro
-        </p>
-    </div>
+<h2> La débâcle du Giétro</h2>
 
-<p>Chapitre 1 et 2
-</p>
-<p>Timeline + roman
-</p>
+<p>Plusieurs incidents avaient déjà eu lieu avant le mois de juin 1818. En mai 1817, une petit débâcle avait eu lieu. En avril 1818, des morceaux du glacier du Giétro tombent dans la vallée et bouchent le passage du torrent: un lac se forme. </p>
+<p>Des travaux avaient été entrepris à partir du mois de mai, pour essayer de prévenir une catastrophe. Jean Georges Troillet avait constaté qu'un lac s'était formé suite à l'éboulement du glacier. <a class="lien" href="{{url_for('course')}}" target="blank">Lien</a> </p>
+<p>Malgré tout, la barre de glace céda et le lac se déversa dans la vallée. La coulée fit 25 victimes et occasionna de nombreux dégâts. <a class="lien" href="{{url_for('victime')}}" target="blank">Lien</a> </p>
+<p>L'organisation des secours est rendue difficile par la destruction des ponts qui permettaient de lier les deux côtés de la Dranse.<a class="lien" href="{{url_for('bienfaisance')}}" target="blank">Lien</a></p>
+<p>Heureusement, les communes sinistrées purent compter sur l'aide de la Suisse, mais aussi des Anglais. <a class="lien" href="{{url_for('bienfaisance')}}" target="blank">Lien</a> </p>
 
 {% endblock %}
