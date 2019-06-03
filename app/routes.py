@@ -5,6 +5,8 @@ from sqlalchemy import or_
 from config import RESULTATS_PAR_PAGE
 
 
+# Pour les pages qui n'affichent que le contenu qu'elles ont, la route ne prend pas de paramètres
+
 @app.route('/')
 def accueil():
     return render_template('pages/accueil.html')
@@ -35,11 +37,6 @@ def souvenir():
     return render_template('pages/souvenir.html')
 
 
-@app.route('/approfondir')
-def approfondir():
-    return render_template('pages/pourapp.html')
-
-
 @app.route('/recherche')
 def recherche():
     return render_template('pages/recherche.html')
@@ -49,6 +46,8 @@ def recherche():
 def secours():
     return render_template('pages/secours.html')
 
+# Pour les fiches de personnes auxquelles on accède par la recherche, on donne comme paramètre l'id de la db Personne
+# On sélectionne une personne et on injecte les infos de cette notice dans le template.
 
 @app.route("/notice/<int:personne_id>")
 def notice(personne_id):
@@ -56,17 +55,26 @@ def notice(personne_id):
     return render_template("pages/personne.html", noticep=noticep)
 
 
+# Pour les fiches de personnes auxquelles on accède par la recherche, on donne comme paramètre l'id de la db Lieu
+# On sélectionne une personne et on injecte les infos de cette notice dans le template.
+@app.route("/lieu/<int:lieu_id>")
+def village(lieu_id):
+    noticev = Lieu.query.get(lieu_id)
+    return render_template("pages/village.html", noticev=noticev)
+
+
+# On crée une page pour la map, qui ne comporte rien d'autre que la map.
 @app.route('/map')
 def carte():
     return render_template('pages/map.html')
 
-
+# On définit quels sont les 4 types que le dropdown propose avec la variable type.
 @app.route('/rechercheavancee')
 def rechercheavancee():
     types = Type.query.order_by(Type.type_label).all()
     return render_template('pages/rechercheavancee.html', types=types)
 
-
+# On fait la recherche du motclef donné par l'utilisateur dans la db Personne // VOIR POUR LIEU
 @app.route('/resultats')
 def search_results():
 
@@ -93,6 +101,7 @@ def search_results():
     return render_template("pages/resultat.html", results=results, titre=titre, motclef=motclef)
 
 
+# La recherche peut être spécifiquement dans certains champs de la db
 @app.route('/resultatavance')
 def resultatavance():
 
@@ -102,9 +111,11 @@ def resultatavance():
     de = request.args.get("de", None)
     domicile = request.args.get("domicile", None)
     role = request.args.get("role", None)
+    lieu = request.args.get("lieu", None)
     page = request.args.get("page", 1, type=int)
 
     resultats = []
+    village = []
 
     if motclef:
         resultats = Personne.query.filter(or_(
@@ -131,12 +142,12 @@ def resultatavance():
 
     if de:
         resultats = Personne.query.filter(
-            Personne.de.like("%{}%".format(de))).order_by(Personne.nom.asc()).paginate(
+            Personne.lieu_de_naissance.has(Lieu.nom == de)).order_by(Personne.nom.asc()).paginate(
             page=page, per_page=RESULTATS_PAR_PAGE)
 
     if domicile:
         resultats = Personne.query.filter(
-            Personne.domicile.like("%{}%".format(domicile))).order_by(Personne.nom.asc()).paginate(
+            Personne.lieu_de_domicile.has(Lieu.nom== domicile)).order_by(Personne.nom.asc()).paginate(
             page=page, per_page=RESULTATS_PAR_PAGE)
 
     if role and role != "all":
@@ -144,6 +155,16 @@ def resultatavance():
             Personne.type.has(Type.type_label == role)).order_by(Personne.nom.asc()).paginate(
             page=page, per_page=RESULTATS_PAR_PAGE)
 
+    if lieu:
+        village = Lieu.query.filter(
+            Lieu.nom.like("%{}%".format(lieu))).order_by(Lieu.nom.asc()).paginate(
+            page=page, per_page=RESULTATS_PAR_PAGE)
+
     titre = "Résultats"
     return render_template('pages/resultatavance.html', resultats=resultats, titre=titre, motclef=motclef, nom=nom,
-                           prenom=prenom, de=de, domicile=domicile, role=role)
+                           prenom=prenom, de=de, domicile=domicile, role=role, lieu=lieu, village=village)
+
+@app.route('/visio')
+def visionneuse():
+    return render_template('pages/visio.html')
+
