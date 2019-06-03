@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{%extends "base.html"%}
+<!-- Sur cette page se trouve la mise en forme de la page correspondant à la notice . On y accède par
+différentes requêtes via des url_for (disséminées notamment dans la page chercheurs.html et résultats.html-->
+{% block content %}
+    <div class="container-fluid">
+    {% if noticev %}
+        <div class="row">
+            <div class ="col-lg-4" >
+                <h4> {{ noticev.nom }}</h4>
+            </div>
+                 <div class ="col-lg-8" >
+                     <dl>
+                            {% if noticev.commune != None %}
+                            <dt>Commune:</dt><dd>{{noticev.commune}}</dd>
+                            {% else %}
+                            <dt>Commune:</dt><dd>Inconnue</dd>
+                            {% endif %}
+                            {% if noticev.degats != None %}
+                            <dt>Dégats:</dt><dd>{{noticev.degats}}</dd>
+                            {% else %}
+                            <dt>Dégats:</dt><dd>Aucun dégâts</dd>
+                            {% endif %}
+                    {% if noticev.nombre_morts != None %}
+                    <dt>Nombre de morts:</dt><dd>{{noticev.nombre_morts}}</dd>
+                    {% else %}
+                    <dt>Nombre de morts:</dt><dd>Aucun décès</dd>
+                    {% endif %}
+                         {% if noticev.animaux_emportes != None %}
+                    <dt>Animaux emportés:</dt><dd>{{noticev.animaux_emportes}}</dd>
+                    {% else %}
+                    <dt>Animaux emportés:</dt><dd>Aucun animaux emportés</dd>
+                    {% endif %}
+
+                     </dl>
+                 </div>
+        </div>
+    {% else %}
+        <h4 style="padding-top:5% ; padding-bottom:5% ; text-align:center">Oups !</h4>
+        <p style="text-align:center">La notice que vous recherchez n'existe pas.</p>
+    {% endif %}
+    </div>
+{% endblock %}
