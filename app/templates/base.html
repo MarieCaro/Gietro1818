@@ -1,6 +1,5 @@
 <html lang="fr">
     <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Giétro 1818 {%block titre %}{%endblock%}</title>
@@ -10,15 +9,21 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
+        <!-- on prend en compte les règles qui sont dans les deux fichiers -->
 
-  {% include "partials/css.html" %}
+        {% include "partials/css.html" %}
         {% include "partials/metadata.html" %}
 
     </head>
 
     <body>
+<!-- bannière -->
+<div>
+    <img src="{{ url_for('static', filename='images/banner.jpg')}}" class="image_full">
+    <img src="{{ url_for('static', filename='images/bannerp.jpg')}}" class="image_mobile">
+</div>
 
-<!-- Navigation -->
+<!-- barre de navigation -->
 <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
@@ -48,42 +53,63 @@
                     <a class="nav-link" href="{{url_for('rechercheavancee')}}">Recherche avancée</a>
                 </li>
                 <form class="form-inline my-2 my-lg-0" action="{{url_for('search_results')}}" method="GET">
-                <input class="form-control mr-sm-2"  name="motclef" type="search" placeholder="Recherche rapide" aria-label="Recherche">
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">Chercher</button>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text cherche" id="basic-addon1">
+                                <a class="cherche" href="{{url_for('search_results')}}"><i class="fas fa-search"></i></a></span>
+                        </div>
+                        <input class="form-control mr-sm-2"  name="motclef" type="search" placeholder="Recherche rapide" aria-label="Recherche">
+                    </div>
                 </form>
-
-
             </ul>
         </div>
     </div>
 </nav>
+
 <hr class="my-4">
+
+
 <!-- Page individuelle-->
 
-{% block content %}{% endblock %}
+{% block content %}
 
-<!--- Pied de page -->
+{% endblock %}
+
+<!-- bouton de retour au sommet -->
+
+
+<!--- pied de page -->
 
     <footer>
-        <div class="container-fluid padding">
+        <div class="container-fluid paddingf">
             <div class="row text-center">
-                <div class="col-md-6">
-                    <img>
+                <div class="col-md-6" padding="1rem">
+                    <img src="{{ url_for('static', filename='images/AEVSW_logo_black.png')}}" class="logoa">
                     <hr class="light">
+                    <a class="social" href="https://fr-fr.facebook.com/archivVS/" target="blank">
+                        <i class="fab fa-facebook"></i></a>
+                    <a class="social" href="https://twitter.com/archivvs?lang=fr" target="blank">
+                        <i class="fab fa-twitter"></i></a>
+                    <a class="social" href="https://www.instagram.com/archivvs/" target="blank">
+                        <i class="fab fa-instagram"></i></a>
+                    <a class="social" href="https://www.linkedin.com/company/archives-de-l-etat-du-valais" target="blank">
+                        <i class="fab fa-linkedin"></i></a>
                     <p>Rue de Lausanne 45</p>
                     <p>1950 Sion</p>
                     <p>027 606 46 00</p>
                     <p>archives@admin.vs.ch</p>
                 </div>
                 <div class="col-md-6">
-                    <img>
+                    <img src="{{ url_for('static', filename='images/musee01.png')}}" class="logom">
                     <hr class="light">
+                    <a class="social" href="https://fr-fr.facebook.com/MuseedeBagnes/" target="blank">
+                        <i class="fab fa-facebook"></i></a>
                     <p>Chemin de l'Eglise 13</p>
                     <p>1934 Le Châbles</p>
                     <p>027 776 15 25</p>
                     <p>musee@bagnes.ch </p>
                 </div>
-                <div class=""col-12>
+                <div class="col-12">
                     <hr class="light">
                     <h5>&copy;??</h5>
 
