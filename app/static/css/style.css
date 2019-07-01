@@ -1,36 +1,71 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
-
 html, body{
 height:100%;
 width: 100%;
-font-family:"Poppins", sans-serif;
 color:#222;
 background-color:#f6eeee;
+font-family:"Gza";
 }
 
+
+/* Marge des paragraphes de texte */
+p
+{margin-left:20% !important;
+margin-right:20% !important;
+text-align:justify;}
+
+
+/* Règles pour les titres */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #990000;
+  text-align:center;
+  font-family: "Gza";
+}
+
+h2 {
+padding:20px;}
+
+h4 {
+padding-bottom: 5%;
+padding-top: 5%;}
+
+/* Règles pour la barre de navigation */
 .navbar {
-padding: .8rem;
-color: #222;
-background-color:#f6eeee !important;
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color:#f6eeee !important;
+  color: #222 ;
 }
 
 .nav-link {
   display: block;
-  padding: 0.5rem 1rem;
   color: #990000 !important ;
   border-color: #990000 !important;
-  border-radius: 25px;
-  padding: 20px;
+  border-radius: 5px;
+  padding: 0.5%;
   width: 100%;
   height: 100%;
+  text-align:center;
+  font-family: Gza;
 }
 
 .nav-link:hover, .nav-link:focus {
   text-decoration: none;
-  color: #b30000 !important ;
-  background-color: #ffffcc;
+  color: #f6eeee !important ;
+  background-color: #990000 ;
+  border-color: #b30000;
 }
 
+/*Règle pour les boutons du site */
 .btn-primary {
   color: #fff;
   background-color: #990000;
@@ -43,12 +78,17 @@ background-color:#f6eeee !important;
   border-color: #b30000;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  color: #990000;
-}
+.btn-outline-info{
+color: #990000 !important;
+background-color: #ffffe6 !important;
+border-color: #990000 !important; }
 
+.btn-outline-info:hover{
+color: #ffffe6!important;
+background-color: #990000 !important;}
+
+
+/* Règles pour les formulaires */
 .form-control {
   display: block;
   width: 100%;
@@ -57,73 +97,208 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #495057;
-  background-color: #f6eeee;
+  color: #b30000 !important;
+  background-color: #f6eeee !important;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.form-control:focus {
+  color: #990000;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: none !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+.form-inline:focus {
+  color: #990000;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: none !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+input-group:focus {
+background-color:#ffffe6 !important;
+outline: none !important;}
+
+
+/* Changement de la couleur et du padding dans le footer */
 footer {
 color:#ffffe6;
-background-color:#990000;}
+background-color:#990000;
+text-align:center;}
 
-input {
-background-color:#ffffe6 !important;}
-
-.justi{
-justify-content: center;}
-
-
-
-
-/*---Media Queries --*/
-@media (max-width: 992px) {
-
-  }
-@media (max-width: 768px) {
-  
-}
-@media (max-width: 576px) {
-  
+.paddingf{
+padding-top: 1%;
 }
 
-/*--- Fixed Background Image --*/
-figure {
-  position: relative;
-  width: 100%;
-  height: 60%;
-  margin: 0!important;
+.paddingr {
+padding-top: 5%;
+padding-bottom: 5%;
 }
-.fixed-wrap {
-  clip: rect(0, auto, auto, 0);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+
+
+
+/* css pour les icones des réseaux sociaux */
+.social {
+color:#ffffe6;
+font-size: 30px;
+padding: 1rem;
 }
-#fixed {
-  background-image: url('fond.jpg');
+
+.social:hover {
+color:#ffffe6;
+}
+
+
+
+/* Modification de la couleur du bouton de recherche */
+.cherche{
+color: #f6eeee !important;
+background-color:#990000;
+}
+
+
+/* Modification des marges et de la couleurs pour les longues citations */
+.citation{ padding-left: 5% !important;
+padding-right: 5% !important;
+color:#808080;}
+
+
+
+/* Taille de la police pour les notes en exposant */
+sup {font-size:75% !important;}
+
+
+/* modification de la couleur des liens */
+a {color: #990000;}
+
+a:hover{
+color:#990000;}
+
+
+/* logo du musée et des archives */
+.logoa {width:15%;
+height:auto;}
+
+.logom {width:30%;
+height:auto;
+padding-bottom:2.7rem;
+padding-top:2rem;}
+
+
+/* ajout de la police du livre */
+@font-face {
+   font-family: Gza;
+   src: url('Gza-Alt-Super.otf');
+}
+
+
+
+/* ajout du bouton pour remonter au sommet */
+
+#myBtn {
+  display: none;
   position: fixed;
-  display: block;
-  top: 0;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #990000;
+  color: #f6eeee;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+#myBtn:hover {
+  background-color: #b30000;
+}
+
+
+
+/* css pour le dropdown dans la barre de nav */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-  will-change: transform;
-}
-/*--- Bootstrap Padding Fix --*/
-[class*="col-"] {
-    padding: 1rem;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #222;
+  text-align: left;
+  list-style: none;
+  background-color: #f6eeee !important;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
 }
 
+.dropdown-menu a:hover{
+    background-color:#990000;
+    color:#f6eeee; }
 
+
+
+/* css des cartes pour les pages suivantes */
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  border-color: #990000;
+}
+
+.lire {
+text-align: right;}
+
+
+/*css de la bannière*/
+
+.image_full{
+   display:block !important;
+   size: 100%;
+  }
+
+ .image_mobile{
+  display:none !important;
+ }
+
+@media (max-width: 768px) and (min-width: 320px){
+  .image_full{
+   display:none !important;
+  }
+
+  .image_mobile{
+   display:block !important;
+   size: 100%;
+  }
+
+.center {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 50% !important;
+}
 
 
 
