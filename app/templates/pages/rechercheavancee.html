@@ -1,15 +1,16 @@
 {% extends "base.html" %}
+
+{% block titre %}| Recherche avancée {%endblock%}
 {% block content %}
 
-<div class = "container" id="formulaire-recherche-avancee" style="padding-top: 5%; padding-bottom: 5%">
+<div class = "container paddingr" id="formulaire-recherche-avancee">
 	<h2>Formulaire de recherche avancée</h2>
 	<form action="{{url_for('resultatavance')}}" method="GET" id="recherche_form">
-		<label> Notre base de données répertorie les personnes qui ont été impliquées dans la catastrophe du Giétro. Elle répertorie aussi les lieux qui ont été touchés par la débâcle.</label>
-		<label> Si vous cherchez un mot en particulier, utilisez la recherche plein texte.</label>
-		<label>	Si vous cherchez la fiche d'une personne, utilisez la recherche par nom, prénom ou lieu de naissance ou de domicile.</label>
-		<label> Si vous voulez des informations sur les lieux touchés, utilisez la recherche par village.</label>
-		<label> Et finalement si vous voulez la liste des victimes ou des membres de la commission du Giétro, utilisez le menu déroulant.</label>
-		<label> Vous pouvez remplir autant de champs que vous le désirez.</label>
+		<p> Si vous cherchez un mot en particulier, utilisez la recherche plein texte.</p>
+		<p>	Si vous cherchez la fiche d'une personne, utilisez la recherche par nom, prénom ou lieu de naissance ou de domicile.</p>
+		<p> Si vous voulez des informations sur les lieux touchés, utilisez la recherche par village.</p>
+		<p> Et finalement si vous voulez la liste des victimes ou des membres de la commission du Giétro, utilisez le menu déroulant.</p>
+		<p> Vous pouvez remplir autant de champs que vous le désirez.</p>
 
 	<div class="form-group">
 		<input class="form-control" type="search" name="motclef" placeholder="Recherche plein texte">
@@ -43,10 +44,11 @@
 			{% for cat in types %}
 				<option value="{{cat.type_label}}">{{cat.type_label}}</option>
 			{% endfor %}
-		</select>
+</select>
 	</div>
 	<button type="submit" class="btn btn-primary" id="search">Rechercher</button>
 	</form>
 </div>
+
 
 {% endblock %}

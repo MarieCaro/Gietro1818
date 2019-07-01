@@ -1,10 +1,16 @@
 
 {%extends "base.html"%}
 
+{%block titre %}| {{titre}}{%endblock%}
+
 {% block content %}
     {% if resultats %}
+        {% if resultats.total == 0%}
 
-        {% if resultats.total == 1 %}
+        <p>Il n'y a pas de résultats. Etes-vous sûr de l'orthographe? Nous avons pris le parti de respecter l'orthographe
+        actuelle des patronymes et de la toponymie.</p>
+
+        {% elif resultats.total == 1 %}
 
         <p>Il y a {{resultats.total}} résultat qui répond à votre requête: </p>
 
@@ -30,7 +36,12 @@
         </nav>
     {%elif village %}
 
-        {% if village.total == 1 %}
+        {% if village.total == 0%}
+
+        <p>Il n'y a pas de résultats. Etes-vous sûr de l'orthographe? Nous avons pris le parti de respecter l'orthographe
+        actuelle des patronymes et de la toponymie.</p>
+
+        {% elif resultats.total == 1 %}
 
         <p>Il y a {{village.total}} résultat qui répond à votre requête: </p>
 
@@ -57,13 +68,10 @@
             {% endfor %}
         </nav>
 
+    {% endif%}
 
-    {%else%}
-        <p>Il n'y a pas de résultats.Etes-vous sûr de l'orthographe? Nous avons pris le parti de respecter l'orthographe
-        actuelle des patronymes et de la toponymie.</p>
-    {%endif%}
 
-<div class = "container" style="padding-bottom: 5%;">
+<div class = "container paddingr">
     <a class="btn btn-primary" href="{{ url_for('rechercheavancee') }}">Faire une nouvelle recherche</a>
 </div>
 

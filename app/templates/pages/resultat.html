@@ -2,33 +2,64 @@
 {%block titre %}| {{titre}}{%endblock%}
 
 {% block content %}
+
+ <!-- S'il y a des résultats à la recherche -->
 {% if results %}
 
-    <p>Il y a {{results.total}} résultats qui répondent à votre requête</p>
+    <!-- On sépare en fonction du nombre de résultats. -->
 
+    {% if results.total == 1 %}
+
+    <p>Il y a {{results.total}} résultat qui répond à votre requête: </p>
+
+    {% else %}
+
+    <p>Il y a {{results.total}} résultats qui répondent à votre requête: </p>
+
+    {% endif %}
+
+        <!-- On boucle sur les résultats pour afficher tous les noms et un lien vers la page de notice -->
         {% for personne in results.items %}
             <ul>
-                <li><a href="{{url_for('notice', personne_id=personne.id)}}"> {{personne.nom}}, {{personne.prenom}}</a></li>
+                <li><a class="lien"href="{{url_for('notice', personne_id=personne.id)}}"> {{personne.nom}}, {{personne.prenom}}</a></li>
             </ul>
         {% endfor %}
 
     <nav aria-label="pagination" class="pagination">
 
+        <!-- On boucle sur les page_num pour afficher les numéros de page de résultats -->
         {% for page_num in results.iter_pages() %}
-            {% if page_num %}
+            {% if page_num > 1%}
                 <a class = "btn btn-outline-info mb-4 " href="{{url_for('search_results', page=page_num, motclef=motclef,
                 results=results, title=title)}}">{{page_num}}</a>
             {% endif %}
         {% endfor %}
     </nav>
 
+    {% if autres_results %}
+
+    <p>Ces autres résultats contiennent les mots que vous avez cherché:</p>
+
+        {% for pers in autres_results.items%}
+            <ul>
+                <li><a class="lien"href="{{url_for('notice', personne_id=pers.id)}}"> {{pers.nom}}, {{pers.prenom}}</a></li>
+            </ul>
+        {% endfor %}
+
+
+    {%else%}
+    <p></p>
+    {%endif%}
+
 {%else%}
 
+    <!-- S'il n'y avait pas de résultats à la recherche -->
     <p>Il n'y a pas de résultats, êtes-vous sûr de l'orthographe?</p>
 
 {%endif%}
 
-<div class= "container" style="padding-bottom: 5%; text-align:center">
+ <!-- On propose de faire une recherche avancée -->
+<div class= "container paddingr">
     <a class="btn btn-primary" href="{{ url_for('rechercheavancee') }}">Faire une recherche avancée</a>
 </div>
 {% endblock %}

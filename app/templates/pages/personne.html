@@ -1,7 +1,6 @@
 {%extends "base.html"%}
     {%block titre %}| {{ noticep.nom }} {{noticep.prenom}} | Notice{%endblock%}
-<!-- Sur cette page se trouve la mise en forme de la page correspondant à la notice complète du chercheur. On y accède par
-différentes requêtes via des url_for (disséminées notamment dans la page chercheurs.html et résultats.html-->
+<!-- Page qui contient le layout de la notice des personnes de la base de données-->
 {% block content %}
 
     <div class="container-fluid">
@@ -9,6 +8,12 @@ différentes requêtes via des url_for (disséminées notamment dans la page che
         <div class="row">
             <div class ="col-lg-4" >
                 <h4>{{noticep.prenom}} {{ noticep.nom }}</h4>
+
+                    <figure class="small text-center">
+                        <img class="rounded-circle center" src="{{noticep.image}}">
+                        <figcaption>{{noticep.legende}}</figcaption>
+                    </figure>
+
             </div>
                  <div class ="col-lg-8" >
                      <p>Catégorie : {{noticep.type.type_label}}</p>
@@ -86,8 +91,8 @@ différentes requêtes via des url_for (disséminées notamment dans la page che
                  </div>
         </div>
     {% else %}
-        <h4 style="padding-top:5% ; padding-bottom:5% ; text-align:center">Oups !</h4>
-        <p style="text-align:center">La notice que vous recherchez n'existe pas.</p>
+        <h4>Oups !</h4>
+        <p>La notice que vous recherchez n'existe pas.</p>
     {% endif %}
     </div>
 {% endblock %}
