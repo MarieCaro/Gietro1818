@@ -1,23 +1,22 @@
 from flask import render_template, url_for, request
 from app import app
-from .models import Personne, Lieu, Type
+from .models import Personne, Lieu, Type, Image
 from sqlalchemy import or_
 from config import RESULTATS_PAR_PAGE
 
 
 # Pour les pages qui n'affichent que le contenu qu'elles ont, la route ne prend pas de paramètres
-
 @app.route('/')
 def accueil():
     return render_template('pages/accueil.html')
 
 
-@app.route('/course contre la montre')
+@app.route('/course_contre_la montre')
 def course():
     return render_template('pages/course.html')
 
 
-@app.route('/victime')
+@app.route('/victimes')
 def victime():
     return render_template('pages/victime.html')
 
@@ -46,9 +45,19 @@ def recherche():
 def secours():
     return render_template('pages/secours.html')
 
+
+@app.route('/reconstruction')
+def reconstruction():
+    return render_template('pages/reconstruction.html')
+
+
+@app.route('/generosite')
+def generosite():
+    return render_template('pages/generosite.html')
+
+
 # Pour les fiches de personnes auxquelles on accède par la recherche, on donne comme paramètre l'id de la db Personne
 # On sélectionne une personne et on injecte les infos de cette notice dans le template.
-
 @app.route("/notice/<int:personne_id>")
 def notice(personne_id):
     noticep = Personne.query.get(personne_id)
@@ -80,25 +89,31 @@ def search_results():
 
     motclef = request.args.get("motclef", None)
     page = request.args.get("page", 1, type=int)
-
     results = []
+    autres_results = []
+
+    mots = motclef.split()
+
+    for mot in mots:
+        results = Personne.query.filter(or_(
+            Personne.nom.like("%{}%".format(mot)),
+            Personne.prenom.like("%{}%".format(mot)),
+        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
+
+        autres_results = Personne.query.filter(or_(Personne.age.like("%{}%".format(mot)),
+            Personne.travail.like("%{}%".format(mot)),
+            Personne.fonction.like("%{}%".format(mot)),
+            Personne.donnees_biographiques.like("%{}%".format(mot)),
+            Personne.informations_complementaires.like("%{}%".format(mot)),
+            Personne.levee_de_corps.like("%{}%".format(mot)),
+            Personne.mission_debacle.like("%{}%".format(mot)),
+        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
+
+
     titre = "Recherche"
 
-    if motclef:
-        results = Personne.query.filter(or_(
-            Personne.nom.like("%{}%".format(motclef)),
-            Personne.prenom.like("%{}%".format(motclef)),
-            Personne.age.like("%{}%".format(motclef)),
-            Personne.travail.like("%{}%".format(motclef)),
-            Personne.fonction.like("%{}%".format(motclef)),
-            Personne.donnees_biographiques.like("%{}%".format(motclef)),
-            Personne.informations_complementaires.like("%{}%".format(motclef)),
-            Personne.levee_de_corps.like("%{}%".format(motclef)),
-            Personne.mission_debacle.like("%{}%".format(motclef)),
-        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
-        titre = "Résultat"
 
-    return render_template("pages/resultat.html", results=results, titre=titre, motclef=motclef)
+    return render_template("pages/resultat.html", results=results, autres_results=autres_results)
 
 
 # La recherche peut être spécifiquement dans certains champs de la db
@@ -117,18 +132,45 @@ def resultatavance():
     resultats = []
     village = []
 
+
     if motclef:
-        resultats = Personne.query.filter(or_(
-            Personne.nom.like("%{}%".format(motclef)),
-            Personne.prenom.like("%{}%".format(motclef)),
-            Personne.age.like("%{}%".format(motclef)),
-            Personne.travail.like("%{}%".format(motclef)),
-            Personne.fonction.like("%{}%".format(motclef)),
-            Personne.donnees_biographiques.like("%{}%".format(motclef)),
-            Personne.informations_complementaires.like("%{}%".format(motclef)),
-            Personne.levee_de_corps.like("%{}%".format(motclef)),
-            Personne.mission_debacle.like("%{}%".format(motclef)),
-        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
+        if len(motclef.split()) > 1:
+            mots = motclef.split()
+            motclef = mots[0]
+            motclef = mots[1]
+            resultats = Personne.query.filter(or_(
+                Personne.nom.like("%{}%".format(motclef)),
+                Personne.nom.like("%{}%".format(motclef)),
+                Personne.prenom.like("%{}%".format(motclef)),
+                Personne.prenom.like("%{}%".format(motclef)),
+                Personne.age.like("%{}%".format(motclef)),
+                Personne.age.like("%{}%".format(motclef)),
+                Personne.travail.like("%{}%".format(motclef)),
+                Personne.travail.like("%{}%".format(motclef)),
+                Personne.fonction.like("%{}%".format(motclef)),
+                Personne.fonction.like("%{}%".format(motclef)),
+                Personne.donnees_biographiques.like("%{}%".format(motclef)),
+                Personne.donnees_biographiques.like("%{}%".format(motclef)),
+                Personne.informations_complementaires.like("%{}%".format(motclef)),
+                Personne.informations_complementaires.like("%{}%".format(motclef)),
+                Personne.levee_de_corps.like("%{}%".format(motclef)),
+                Personne.levee_de_corps.like("%{}%".format(motclef)),
+                Personne.mission_debacle.like("%{}%".format(motclef)),
+                Personne.mission_debacle.like("%{}%".format(motclef)),
+            )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
+
+        else:
+            resultats = Personne.query.filter(or_(
+                Personne.nom.like("%{}%".format(motclef)),
+                Personne.prenom.like("%{}%".format(motclef)),
+                Personne.age.like("%{}%".format(motclef)),
+                Personne.travail.like("%{}%".format(motclef)),
+                Personne.fonction.like("%{}%".format(motclef)),
+                Personne.donnees_biographiques.like("%{}%".format(motclef)),
+                Personne.informations_complementaires.like("%{}%".format(motclef)),
+                Personne.levee_de_corps.like("%{}%".format(motclef)),
+                Personne.mission_debacle.like("%{}%".format(motclef)),
+            )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
 
     if nom:
         resultats = Personne.query.filter(
@@ -164,7 +206,18 @@ def resultatavance():
     return render_template('pages/resultatavance.html', resultats=resultats, titre=titre, motclef=motclef, nom=nom,
                            prenom=prenom, de=de, domicile=domicile, role=role, lieu=lieu, village=village)
 
-@app.route('/visio')
+@app.route('/iiif')
 def visionneuse():
-    return render_template('pages/visio.html')
+    return render_template('pages/index.html')
+
+@app.route('/index/personne')
+def indexp():
+    personne = Personne.query.all()
+    return render_template('pages/indexp.html', personne=personne)
+
+@app.route('/index/lieu')
+def indexl():
+    lieu = Lieu.query.all()
+    return render_template('pages/indexl.html', lieu=lieu)
+
 
