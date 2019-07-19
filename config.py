@@ -1,8 +1,10 @@
-import os
-basedir = os.path.abspath(os.path.dirname(__file__))
+class CONFIG(object):
 
-class Config(object):
-
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///gietro.sqlite'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_ECHO = True
+    DEBUG = True
+
+
+RESULTATS_PAR_PAGE = 10
+AUTRES_RESULTATS= 50

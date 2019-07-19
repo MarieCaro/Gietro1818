@@ -14,28 +14,23 @@
                      <dl>
                             {% if noticev.commune != None %}
                             <dt>Commune:</dt><dd>{{noticev.commune}}</dd>
-                            {% else %}
-                            <dt>Commune:</dt><dd>Inconnue</dd>
                             {% endif %}
                             {% if noticev.degats != None %}
                             <dt>Dégats:</dt><dd>{{noticev.degats}}</dd>
                             {% else %}
-                            <dt>Dégats:</dt><dd>Aucun dégâts</dd>
+                            <dt>Dégâts:</dt><dd>–</dd>
                             {% endif %}
                             {% if noticev.nombre_morts != None %}
                             <dt>Nombre de morts:</dt><dd>{{noticev.nombre_morts}}</dd>
                             {% else %}
-                            <dt>Nombre de morts:</dt><dd>Aucun décès</dd>
+                            <dt>Nombre de morts:</dt><dd>–</dd>
                             {% endif %}
                                  {% if noticev.animaux_emportes != None %}
                             <dt>Animaux emportés:</dt><dd>{{noticev.animaux_emportes}}</dd>
                             {% else %}
-                            <dt>Animaux emportés:</dt><dd>Aucun animaux emportés</dd>
+                            <dt>Animaux emportés:</dt><dd>–</dd>
                             {% endif %}
                           </dl>
-
-                         <p class="center">Si vous voulez connaître toutes les notices en lien avec {{ noticev.nom }}, vous pouvez faire une recherche en plein texte   </p>
-
 
                  </div>
         </div>

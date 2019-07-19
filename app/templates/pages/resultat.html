@@ -1,35 +1,36 @@
 {% extends "base.html" %}
 {%block titre %}| {{titre}}{%endblock%}
-
+=
 {% block content %}
 
+
  <!-- S'il y a des résultats à la recherche -->
-{% if results %}
 
-    <!-- On sépare en fonction du nombre de résultats. -->
+{% if places.total != 0 %}
 
-    {% if results.total == 1 %}
+    {% if places.total == 1 %}
 
-    <p>Il y a {{results.total}} résultat qui répond à votre requête: </p>
+    <p>Il y a 1 résultat qui répond à votre requête: </p>
 
-    {% else %}
-
-    <p>Il y a {{results.total}} résultats qui répondent à votre requête: </p>
+    {%else%}
+    <p>Il y a {{places.total}} résultats qui répondent à votre requête: </p>
 
     {% endif %}
 
         <!-- On boucle sur les résultats pour afficher tous les noms et un lien vers la page de notice -->
-        {% for personne in results.items %}
+        {% for place in places.items %}
             <ul>
-                <li><a class="lien"href="{{url_for('notice', personne_id=personne.id)}}"> {{personne.nom}}, {{personne.prenom}}</a></li>
+                <li><a class="lien" href="{{url_for('village', lieu_id=place.lieuId)}}"> {{place.nom}}</a></li>
             </ul>
         {% endfor %}
+
+
 
     <nav aria-label="pagination" class="pagination">
 
         <!-- On boucle sur les page_num pour afficher les numéros de page de résultats -->
         {% for page_num in results.iter_pages() %}
-            {% if page_num > 1%}
+            {% if page_num %}
                 <a class = "btn btn-outline-info mb-4 " href="{{url_for('search_results', page=page_num, motclef=motclef,
                 results=results, title=title)}}">{{page_num}}</a>
             {% endif %}
@@ -42,14 +43,60 @@
 
         {% for pers in autres_results.items%}
             <ul>
-                <li><a class="lien"href="{{url_for('notice', personne_id=pers.id)}}"> {{pers.nom}}, {{pers.prenom}}</a></li>
+                <li><a class="lien" href= "{{url_for('notice', personne_id=pers.id)}}"> {{pers.nom}}, {{pers.prenom}}</a></li>
             </ul>
         {% endfor %}
 
+    {%endif%}
 
+
+
+
+{% elif results.total != 0 %}
+
+    <!-- On sépare en fonction du nombre de résultats. -->
+
+    {% if results.total == 1 %}
+
+    <p>Il y a 1 résultat qui répond à votre requête </p>
+
+    {% else %}
+
+    <p>Il y a {{results.total}} résultats qui répondent à votre requête </p>
+
+    {% endif %}
+
+        <!-- On boucle sur les résultats pour afficher tous les noms et un lien vers la page de notice -->
+        {% for personne in results.items %}
+            <ul>
+                <li><a class="lien" href="{{url_for('notice', personne_id=personne.id)}}"> {{personne.nom}}, {{personne.prenom}}</a></li>
+            </ul>
+        {% endfor %}
+
+    <nav aria-label="pagination" class="pagination">
+
+        <!-- On boucle sur les page_num pour afficher les numéros de page de résultats -->
+        {% for page_num in results.iter_pages() %}
+            {% if page_num %}
+                <a class = "btn btn-outline-info mb-4 " href="{{url_for('search_results', page=page_num, motclef=motclef,
+                results=results, title=title)}}">{{page_num}}</a>
+            {% endif %}
+        {% endfor %}
+    </nav>
+
+    {% if autres_results %}
+
+    <p>Ces autres résultats contiennent les mots que vous avez cherché</p>
+
+        {% for pers in autres_results.items%}
+            <ul>
+                <li><a class="lien" href="{{url_for('notice', personne_id=pers.id)}}"> {{pers.nom}}, {{pers.prenom}}</a></li>
+            </ul>
+        {% endfor %}
     {%else%}
     <p></p>
     {%endif%}
+
 
 {%else%}
 

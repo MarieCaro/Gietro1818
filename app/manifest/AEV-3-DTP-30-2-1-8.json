@@ -1,0 +1,87 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Manifest",
+  "@id": "http://localhost:8000/manifest/AEV-3-DTP-30-2-1-8.json",
+  "label": "archive",
+  "description": "Documents d'archives relatifs à la débâcle du Giétroz en 1818",
+  "metadata": [
+    {
+      "label": "cote",
+      "value": "3 DTP 30.2.1/8"
+    },
+    {
+      "label": "type",
+      "value": "lettre"
+    },
+    {
+      "label": "émetteur",
+      "value": "Président de la commune de Liddes"
+    },
+    {
+      "label": "destinataire",
+      "value": "Charles d'Odet, Commissaire"
+    },
+    {
+      "label": "date",
+      "value": "25/06/1818"
+    },
+    {
+      "label": "lieu",
+      "value": "Liddes"
+    },
+    {
+      "label": "sujet",
+      "value": "30 ouvriers ont été nommés pour aller travailler à l'ouverture de la route. Il y a des réfractaires, dont un riche commerçant, qu'il faut sanctionner."
+    }
+  ],
+  "attribution": "Archives de l'Etat du Valais",
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "viewingHint": "individuals/paged",
+      "viewingDirection": "left-to-right",
+      "canvases": [
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-images manquantes/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-images manquantes/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-images manquantes/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH-images manquantes ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                },
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH- ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                }
+                ]
+    
+    }]
+    }

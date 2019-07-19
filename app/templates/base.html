@@ -8,6 +8,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <style type="text/css">#mirador {width: 100%; height: 100%; position: fixed;}</style>
 
         <!-- on prend en compte les règles qui sont dans les deux fichiers -->
 
@@ -34,33 +35,47 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('accueil')}}">Accueil</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('course')}}">Course contre la montre</a>
+                <li>
+                    <div class="dropdown show">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Thèmes</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{url_for('course')}}">Course contre la montre</a>
+                            <a class="dropdown-item" href="{{url_for('victime')}}">Victimes</a>
+                            <a class="dropdown-item" href="{{url_for('secours')}}">Secours</a>
+                            <a class="dropdown-item" href="{{url_for('reconstruction')}}">Reconstruction</a>
+                            <a class="dropdown-item" href="{{url_for('generosite')}}">Générosité </a>
+                            <a class="dropdown-item" href="{{url_for('bienfaisance')}}">Bienfaisance </a>
+                            <a class="dropdown-item" href="{{url_for('ombre')}}">Ombre au tableau</a>
+                            <a class="dropdown-item" href="{{url_for('souvenir')}}">Souvenir de l'«avalo»</a>
+
+                        </div>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('victime')}}">Victimes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('secours')}}">Secours et reconstruction</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('bienfaisance')}}">Bienfaisance et générosite</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('ombre')}}">Ombre au tableau</a>
+                 <li>
+                    <div class="dropdown show">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Index</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="{{url_for('indexp')}}">Personne</a>
+                            <a class="dropdown-item" href="{{url_for('indexl')}}">Lieu</a>
+
+
+                        </div>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('rechercheavancee')}}">Recherche avancée</a>
                 </li>
-                <form class="form-inline my-2 my-lg-0" action="{{url_for('search_results')}}" method="GET">
+                <div class="form-inline my-2 my-lg-0" action="{{url_for('search_results')}}" method="GET">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text cherche" id="basic-addon1">
-                                <a class="cherche" href="{{url_for('search_results')}}"><i class="fas fa-search"></i></a></span>
+                                <i class="fas fa-search"></i></a></span>
                         </div>
-                        <input class="form-control mr-sm-2"  name="motclef" type="search" placeholder="Recherche rapide" aria-label="Recherche">
+                        <input class="form-control mr-sm-2"  name="motclef" type="search" placeholder="Recherche personne, lieu" aria-label="Recherche">
                     </div>
-                </form>
+                </div>
             </ul>
         </div>
     </div>
@@ -69,21 +84,41 @@
 <hr class="my-4">
 
 
+<!-- Ajout d'un bouton pour remonter au sommet des pages -->
+
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-arrow-up"></i>
+</button>
+
+
+<script>window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("myBtn").style.display = "block";
+  } else {
+    document.getElementById("myBtn").style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
 <!-- Page individuelle-->
 
 {% block content %}
 
 {% endblock %}
 
-<!-- bouton de retour au sommet -->
-
-
 <!--- pied de page -->
 
     <footer>
         <div class="container-fluid paddingf">
             <div class="row text-center">
-                <div class="col-md-6" padding="1rem">
+                <div class="col-md-6">
                     <img src="{{ url_for('static', filename='images/AEVSW_logo_black.png')}}" class="logoa">
                     <hr class="light">
                     <a class="social" href="https://fr-fr.facebook.com/archivVS/" target="blank">

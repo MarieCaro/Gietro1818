@@ -1,0 +1,67 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Manifest",
+  "@id": "http://localhost:8000/manifest/AEV-Vieux-Monthey-2958.json",
+  "label": "archive",
+  "description": "Documents d'archives relatifs à la débâcle du Giétroz en 1818",
+  "metadata": [
+    {
+      "label": "cote",
+      "value": "Vieux-Monthey 2958"
+    },
+    {
+      "label": "type",
+      "value": "lettre"
+    },
+    {
+      "label": "émetteur",
+      "value": "Grand Bailli"
+    },
+    {
+      "label": "destinataire",
+      "value": "Delacoste"
+    },
+    {
+      "label": "date",
+      "value": "09/05/1818"
+    },
+    {
+      "label": "lieu",
+      "value": "Sion"
+    },
+    {
+      "label": "sujet",
+      "value": "Le Grand Bailli informe M. Delacoste qu'il est nommé membre de la commission qui est chargé de prendre des mesures concernant le Giétroz. L'autre membre de la commission est le châtelain Indenmatten."
+    }
+  ],
+  "attribution": "Archives de l'Etat du Valais",
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "viewingHint": "individuals/paged",
+      "viewingDirection": "left-to-right",
+      "canvases": [
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-AEV-Vieux-Monthey-2958_002.jpg/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-AEV-Vieux-Monthey-2958_002.jpg/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-AEV-Vieux-Monthey-2958_002.jpg/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH-AEV-Vieux-Monthey-2958_002.jpg ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                }
+                ]
+    
+    }]
+    }

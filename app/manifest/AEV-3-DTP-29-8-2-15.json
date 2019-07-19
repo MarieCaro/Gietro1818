@@ -1,0 +1,87 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Manifest",
+  "@id": "http://localhost:8000/manifest/AEV-3-DTP-29-8-2-15.json",
+  "label": "archive",
+  "description": "Documents d'archives relatifs à la débâcle du Giétroz en 1818",
+  "metadata": [
+    {
+      "label": "cote",
+      "value": "3 DTP 29.8.2/15"
+    },
+    {
+      "label": "type",
+      "value": "rapport"
+    },
+    {
+      "label": "émetteur",
+      "value": "Trechsel, de Charpentier, de la Linth"
+    },
+    {
+      "label": "destinataire",
+      "value": "-"
+    },
+    {
+      "label": "date",
+      "value": "1820"
+    },
+    {
+      "label": "lieu",
+      "value": "-"
+    },
+    {
+      "label": "sujet",
+      "value": "Rapport de la Commission nommée par le gouvernement du Valais pour examiner la situation de la vallée de Bagnes à l'égard des mesures de sûreté à prendre contre les effets du glacier inférieur de Giétroz appuyé au Mauvoisin."
+    }
+  ],
+  "attribution": "Archives de l'Etat du Valais",
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "viewingHint": "individuals/paged",
+      "viewingDirection": "left-to-right",
+      "canvases": [
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-trop/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-trop/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-trop/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH-trop ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                },
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH- ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                }
+                ]
+    
+    }]
+    }

@@ -2,7 +2,7 @@ from flask import render_template, url_for, request
 from app import app
 from .models import Personne, Lieu, Type, Image
 from sqlalchemy import or_
-from config import RESULTATS_PAR_PAGE
+from config import RESULTATS_PAR_PAGE, AUTRES_RESULTATS
 
 
 # Pour les pages qui n'affichent que le contenu qu'elles ont, la route ne prend pas de paramètres
@@ -90,6 +90,7 @@ def search_results():
     motclef = request.args.get("motclef", None)
     page = request.args.get("page", 1, type=int)
     results = []
+    places = []
     autres_results = []
 
     mots = motclef.split()
@@ -99,7 +100,9 @@ def search_results():
             Personne.nom.like("%{}%".format(mot)),
             Personne.prenom.like("%{}%".format(mot)),
         )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
-
+        places = Lieu.query.filter(
+            Lieu.nom.like("%{}%".format(mot))).order_by(Lieu.nom.asc()).paginate(
+            page=page, per_page=RESULTATS_PAR_PAGE)
         autres_results = Personne.query.filter(or_(Personne.age.like("%{}%".format(mot)),
             Personne.travail.like("%{}%".format(mot)),
             Personne.fonction.like("%{}%".format(mot)),
@@ -107,13 +110,12 @@ def search_results():
             Personne.informations_complementaires.like("%{}%".format(mot)),
             Personne.levee_de_corps.like("%{}%".format(mot)),
             Personne.mission_debacle.like("%{}%".format(mot)),
-        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
-
+        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=AUTRES_RESULTATS)
 
     titre = "Recherche"
 
 
-    return render_template("pages/resultat.html", results=results, autres_results=autres_results)
+    return render_template("pages/resultat.html", results=results, autres_results=autres_results, places=places, titre=titre)
 
 
 # La recherche peut être spécifiquement dans certains champs de la db
@@ -134,43 +136,25 @@ def resultatavance():
 
 
     if motclef:
-        if len(motclef.split()) > 1:
-            mots = motclef.split()
-            motclef = mots[0]
-            motclef = mots[1]
-            resultats = Personne.query.filter(or_(
-                Personne.nom.like("%{}%".format(motclef)),
-                Personne.nom.like("%{}%".format(motclef)),
-                Personne.prenom.like("%{}%".format(motclef)),
-                Personne.prenom.like("%{}%".format(motclef)),
-                Personne.age.like("%{}%".format(motclef)),
-                Personne.age.like("%{}%".format(motclef)),
-                Personne.travail.like("%{}%".format(motclef)),
-                Personne.travail.like("%{}%".format(motclef)),
-                Personne.fonction.like("%{}%".format(motclef)),
-                Personne.fonction.like("%{}%".format(motclef)),
-                Personne.donnees_biographiques.like("%{}%".format(motclef)),
-                Personne.donnees_biographiques.like("%{}%".format(motclef)),
-                Personne.informations_complementaires.like("%{}%".format(motclef)),
-                Personne.informations_complementaires.like("%{}%".format(motclef)),
-                Personne.levee_de_corps.like("%{}%".format(motclef)),
-                Personne.levee_de_corps.like("%{}%".format(motclef)),
-                Personne.mission_debacle.like("%{}%".format(motclef)),
-                Personne.mission_debacle.like("%{}%".format(motclef)),
-            )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
+        mots = motclef.split()
 
-        else:
+        for mot in mots:
             resultats = Personne.query.filter(or_(
-                Personne.nom.like("%{}%".format(motclef)),
-                Personne.prenom.like("%{}%".format(motclef)),
-                Personne.age.like("%{}%".format(motclef)),
-                Personne.travail.like("%{}%".format(motclef)),
-                Personne.fonction.like("%{}%".format(motclef)),
-                Personne.donnees_biographiques.like("%{}%".format(motclef)),
-                Personne.informations_complementaires.like("%{}%".format(motclef)),
-                Personne.levee_de_corps.like("%{}%".format(motclef)),
-                Personne.mission_debacle.like("%{}%".format(motclef)),
+                Personne.nom.like("%{}%".format(mot)),
+                Personne.prenom.like("%{}%".format(mot)),
             )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
+            village = Lieu.query.filter(
+                Lieu.nom.like("%{}%".format(mot))).order_by(Lieu.nom.asc()).paginate(
+                page=page, per_page=RESULTATS_PAR_PAGE)
+            autres_results = Personne.query.filter(or_(Personne.age.like("%{}%".format(mot)),
+                                                       Personne.travail.like("%{}%".format(mot)),
+                                                       Personne.fonction.like("%{}%".format(mot)),
+                                                       Personne.donnees_biographiques.like("%{}%".format(mot)),
+                                                       Personne.informations_complementaires.like("%{}%".format(mot)),
+                                                       Personne.levee_de_corps.like("%{}%".format(mot)),
+                                                       Personne.mission_debacle.like("%{}%".format(mot)),
+                                                       )).order_by(Personne.nom.asc()).paginate(page=page,
+                                                                                                per_page=AUTRES_RESULTATS)
 
     if nom:
         resultats = Personne.query.filter(
@@ -206,18 +190,19 @@ def resultatavance():
     return render_template('pages/resultatavance.html', resultats=resultats, titre=titre, motclef=motclef, nom=nom,
                            prenom=prenom, de=de, domicile=domicile, role=role, lieu=lieu, village=village)
 
-@app.route('/iiif')
-def visionneuse():
-    return render_template('pages/index.html')
+@app.route('/iiif/<url>')
+def visionneuse(url):
+    return render_template('pages/example.html')
+
 
 @app.route('/index/personne')
 def indexp():
-    personne = Personne.query.all()
+    personne = Personne.query.order_by(Personne.nom.asc()).all()
     return render_template('pages/indexp.html', personne=personne)
 
 @app.route('/index/lieu')
 def indexl():
-    lieu = Lieu.query.all()
+    lieu = Lieu.query.order_by(Lieu.nom.asc()).all()
     return render_template('pages/indexl.html', lieu=lieu)
 
 

@@ -1,0 +1,127 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Manifest",
+  "@id": "http://localhost:8000/manifest/AEV-AV-Vouvry-P-1363.json",
+  "label": "archive",
+  "description": "Documents d'archives relatifs à la débâcle du Giétroz en 1818",
+  "metadata": [
+    {
+      "label": "cote",
+      "value": "AC Vouvry P 1363"
+    },
+    {
+      "label": "type",
+      "value": "état"
+    },
+    {
+      "label": "émetteur",
+      "value": "-"
+    },
+    {
+      "label": "destinataire",
+      "value": "-"
+    },
+    {
+      "label": "date",
+      "value": "-"
+    },
+    {
+      "label": "lieu",
+      "value": "-"
+    },
+    {
+      "label": "sujet",
+      "value": "Etat des ventes et des taxes faites dans le cadre de la vente des bois le 27 juin 1818."
+    }
+  ],
+  "attribution": "Archives de l'Etat du Valais",
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "viewingHint": "individuals/paged",
+      "viewingDirection": "left-to-right",
+      "canvases": [
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-AEV-AV-Vouvry-P-1363_001.jpg/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-AEV-AV-Vouvry-P-1363_001.jpg/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-AEV-AV-Vouvry-P-1363_001.jpg/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH-AEV-AV-Vouvry-P-1363_001.jpg ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                },
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-AEV-AV-Vouvry-P-1363_002.jpg/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-AEV-AV-Vouvry-P-1363_002.jpg/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-AEV-AV-Vouvry-P-1363_002.jpg/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH-AEV-AV-Vouvry-P-1363_002.jpg ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                },
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-AEV-AV-Vouvry-P-1363_003.jpg/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-AEV-AV-Vouvry-P-1363_003.jpg/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-AEV-AV-Vouvry-P-1363_003.jpg/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH-AEV-AV-Vouvry-P-1363_003.jpg ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                },
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-AEV-AV-Vouvry-P-1363_004.jpg/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-AEV-AV-Vouvry-P-1363_004.jpg/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-AEV-AV-Vouvry-P-1363_004.jpg/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH-AEV-AV-Vouvry-P-1363_004.jpg ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                }
+                ]
+    
+    }]
+    }

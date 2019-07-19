@@ -8,11 +8,13 @@
         <div class="row">
             <div class ="col-lg-4" >
                 <h4>{{noticep.prenom}} {{ noticep.nom }}</h4>
-
+                       {% if noticep.image != None %}
                     <figure class="small text-center">
                         <img class="rounded-circle center" src="{{noticep.image}}">
                         <figcaption>{{noticep.legende}}</figcaption>
                     </figure>
+                {% else %}
+                {% endif %}
 
             </div>
                  <div class ="col-lg-8" >
@@ -21,18 +23,18 @@
                          {% if noticep.age != None %}
                             <dt>Âge</dt><dd>{{noticep.age}}</dd>
                          {% else %}
-                            <dt>Âge</dt><dd>-</dd>
+                            <dt>Âge</dt><dd>–</dd>
                          {% endif %}
 
                           {% if noticep.domicile != None %}
                             <dt>Domicile</dt><dd>{{noticep.lieu_de_domicile.nom}}</dd>
                          {% else %}
-                            <dt>Domicile</dt><dd>-</dd>
+                            <dt>Domicile</dt><dd>–</dd>
                          {% endif %}
                          {% if noticep.de != None %}
                             <dt>Originaire de</dt><dd>{{noticep.lieu_de_naissance.nom}}</dd>
                          {% else %}
-                            <dt>De</dt><dd>-</dd>
+                            <dt>De</dt><dd>–</dd>
                          {% endif %}
                          {% if noticep.travail != None %}
                             <dt>Travail effectué au glacier</dt><dd>{{noticep.travail}}</dd>

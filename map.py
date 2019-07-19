@@ -74,5 +74,9 @@ folium.Marker([45.93440, 7.37289],
               popup="Le Lancet [Lanzet]",
               icon=folium.Icon(color='red')).add_to(m)
 
+folium.Marker([46.074514, 7.155718],
+              popup="Sembrancher",
+              icon=folium.Icon(color='red')).add_to(m)
+
 
 m.save("app/templates/pages/map.html")

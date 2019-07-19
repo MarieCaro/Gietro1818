@@ -1,0 +1,87 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@type": "sc:Manifest",
+  "@id": "http://localhost:8000/manifest/AEV-3-DTP-28-4-10.json",
+  "label": "archive",
+  "description": "Documents d'archives relatifs à la débâcle du Giétroz en 1818",
+  "metadata": [
+    {
+      "label": "cote",
+      "value": "3 DTP 28.4.10"
+    },
+    {
+      "label": "type",
+      "value": "lettre"
+    },
+    {
+      "label": "émetteur",
+      "value": "De Rivaz, Commissaire du gouvernement dans l'Entremont"
+    },
+    {
+      "label": "destinataire",
+      "value": "Grand Bailli"
+    },
+    {
+      "label": "date",
+      "value": "23/08/1818"
+    },
+    {
+      "label": "lieu",
+      "value": "Martigny"
+    },
+    {
+      "label": "sujet",
+      "value": "Route entre Le Brocard et Bovernier.Le sujet de la vente de bois se complique, les heures de foires de Martigny obligent les Entremontans à entrer dans les cabarets."
+    }
+  ],
+  "attribution": "Archives de l'Etat du Valais",
+  "sequences": [
+    {
+      "@type": "sc:Sequence",
+      "viewingHint": "individuals/paged",
+      "viewingDirection": "left-to-right",
+      "canvases": [
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-AEV-3-DTP-28-4-10_001.jpg/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-AEV-3-DTP-28-4-10_001.jpg/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-AEV-3-DTP-28-4-10_001.jpg/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH-AEV-3-DTP-28-4-10_001.jpg ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                },
+                {"@type": "sc:Canvas",
+                "@id": "http://localhost:8182/CH-AEV-3-DTP-28-4-10_002.jpg/canvas/1",
+                "label": "cover",
+                "width": 6099,
+                "height": 8599,
+                "images":[{
+                        "@type": "oa:Annotation",
+                        "motivavtion": "sc:painting",
+                        "on": "http://localhost:8000/CH-AEV-3-DTP-28-4-10_002.jpg/canvas/1",
+                        "resource": {
+                                    "@type": "dctypes:Image",
+                                    "@id": "http://localhost:8182/iiif/2/CH-AEV-3-DTP-28-4-10_002.jpg/full/full/0/default.jpg",
+                                    "service": {
+                                                "@context": "http://iiif.io/api/image/2/context.json",
+                                                "@id": "http://localhost:8182/iiif/2/CH-AEV-3-DTP-28-4-10_002.jpg ",
+                                                "profile": "http://iiif.io/api/image/2/level2.json"
+                                                }
+                                    }
+                        }]
+                }
+                ]
+    
+    }]
+    }

@@ -7,59 +7,41 @@
 <div class="container-fluid">
 <p>A l'occasion du 200<sup>ème</sup> anniversaire de la débâcle du Giétro, les Archives de l'Etat du Valais et le service de la culture de la commune de Bagnes ont décidé d'unir leurs ressources pour mettre en lumière cette
         catastrophe qui coûta la vie à 36 personnes.</p>
-    <p>Deux livres ont parus chez <a href="https://www.faimdesiecle.ch/" target="_blank">Faim de siècle</a>. Le premier, <i>Giétro 1818. La véritable histoire</i> a été publié en 2018. Christine Payot et Arnaud Meilland y racontent le déroulement de la débâcle et établissent la manière dont les évenements se sont déroulés.
-        Le second tome <i>Giétro 1818. Une histoire vraie</i> est paru en 2019. Le travail a été dirigé par Mélanie Hugon-Duc et le livre traite de l'impact de la catastrophe et de la manière dont elle s'est transmise.</p>
+    <p>Deux livres ont parus chez <a href="https://www.faimdesiecle.ch/" target="_blank">Faim de siècle</a>. Le premier, <i>Giétro 1818. La véritable histoire</i> a été publié en 2018. Christine Payot et Arnaud Meilland (Burea Clio Sàrl) centrent leur propos sur le comportement des hommes face à cette menace et face aux destructions qui s'ensuivent.
+        Le second tome <i>Giétro 1818. Une histoire vraie</i> est paru en 2019. Le travail a été dirigé par Mélanie Hugon-Duc et il traite de l'impact de la catastrophe et de la manière dont elle s'est transmise.</p>
     <p>Nous tirons profit des nouvelles technologies pour vous proposer une approche interactive du premier volume.</p>
 </div>
 
-
-
+<div class="center">
 <div class="card-deck">
-<div class="card mb-3 " style="width: 5rem;">
-  <div class="row padding">
-    <div class="col-md-4">
-      <img src="{{ url_for('static', filename='images/CH-AEV-3-DTP-29-8-2-15_000.jpg')}}"  class="card-img-top" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Course contre la montre</h5>
-        <p class="card-text">Plusieurs incidents avaient déjà eu lieu avant le mois de juin 1818. En mai 1817, une petit débâcle avait eu lieu.</p>
-          <a href="{{url_for('course')}}" target="_blank"><p>Lire plus</p> </a>
-      </div>
+  <div class="card" >
+    <img class="card-img-top" src="{{ url_for('static', filename='images/card_test.jpeg')}}" alt="Card image cap">
+    <div class="card-body small">
+      <h5 class="card-title">Course contre la montre</h5>
+      <p class="card-text">Plusieurs incidents avaient déjà eu lieu avant le mois de juin 1818. En mai 1817, une petit débâcle avait eu lieu.</p>
+      <a href="{{url_for('course')}}" target="_blank"><p>Lire plus</p> </a>
     </div>
   </div>
-</div>
-<div class="card mb-3" style="width: 5rem;">
-  <div class="row padding">
-    <div class="col-md-4">
-      <img src="{{ url_for('static', filename='images/AC Bagnes jpg/CH-AEV-AC-Bagnes-P-791-1_000.jpg')}}"  class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Les victimes, chiffres incertains</h5>
-        <p class="card-text">Malgré tout, la barre de glace céda et le lac se déversa dans la vallée. La coulée fit une trentaine de victimes et occasionna de nombreux dégâts.</p>
-          <a class="lire" href="{{url_for('victime')}}" target="blank"><p>Lire plus</p></a>
-      </div>
-    </div>
-  </div>
-</div>
-  <div class="card mb-3" style="width: 5rem;">
-  <div class="row padding">
-    <div class="col-md-4">
-      <img src="{{ url_for('static', filename='images/AC Bagnes jpg/CH-AEV-AC-Bagnes-P-791-12_001.jpg')}}"  class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Course contre la montre</h5>
-        <p class="card-text">Plusieurs incidents avaient déjà eu lieu avant le mois de juin 1818. En mai 1817, une petit débâcle avait eu lieu.</p>
-          <a href="{{url_for('course')}}" target="_blank"><p>Lire plus</p> </a>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
-<p>L'organisation des secours est rendue difficile par la destruction des ponts qui permettaient de lier les deux côtés de la Dranse.<a href="{{url_for('bienfaisance')}}" target="blank">Lien</a></p>
-<p>Heureusement, les communes sinistrées purent compter sur l'aide de la Suisse, mais aussi des Anglais. <a href="{{url_for('bienfaisance')}}" target="blank">Lien</a> </p>
+  <div class="card">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/card_test.jpeg')}}"  alt="Card image cap">
+    <div class="card-body small">
+      <h5 class="card-title">Les victimes, chiffres incertains</h5>
+      <p class="card-text">Malgré tout, la barre de glace céda et le lac se déversa dans la vallée. La coulée fit une trentaine de victimes et occasionna de nombreux dégâts.</p>
+      <a class="lire" href="{{url_for('victime')}}" target="blank"><p>Lire plus</p></a>
+    </div>
+
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="{{ url_for('static', filename='images/card_test.jpeg')}}" alt="Card image cap">
+    <div class="card-body small">
+      <h5 class="card-title">Course contre la montre</h5>
+      <p class="card-text">Plusieurs incidents avaient déjà eu lieu avant le mois de juin 1818. En mai 1817, une petit débâcle avait eu lieu.</p>
+      <a href="{{url_for('course')}}" target="_blank"><p>Lire plus</p> </a>
+    </div>
+  </div>
+</div>
+  </div>
+
 
 {% endblock %}

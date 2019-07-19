@@ -2,5 +2,10 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cours-python" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mirador" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/test_manifest/mirador" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/universalviewer" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/universalviewer/examples" vcs="Git" />
   </component>
 </project>

@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+
+<h1>Lieux touchés par la catastrophe du Giétro</h1>
+
+    {% if lieu %}
+        <p>Voici la liste de tous les lieux référencées dans notre base:</p>
+        <ul>
+            {% for place in lieu %}
+                {% if place.pertinent == 1 %}
+                    <li><a class="lien"href="{{url_for('village', lieu_id=place.lieuId)}}"> {{place.nom}}</a></li>
+                {%endif%}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>La base de données est en cours de constitution</p>
+    {% endif %}
+    <p><a href="{{url_for('accueil')}}">Retour à la page d'accueil</a></p>
+
+{% endblock %}
