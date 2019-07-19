@@ -19,7 +19,7 @@
     <script src="{{url_for('static', filename='mirador/mirador.min.js')}}"></script>
     <script type="text/javascript">
 
-    var lien = "http://localhost:8000/"+url+".json"
+    var lien = "http://localhost:8000/{{url}}.json"
 
      $(function() {
        myMiradorInstance = Mirador({
@@ -27,14 +27,11 @@
          layout: "1x1",
          buildPath: "mirador/",
          data: [
-           { manifestUri: "https://iiif.lib.harvard.edu/manifests/drs:48309543", location: "Harvard University"},
-           { manifestUri: "https://iiif.lib.harvard.edu/manifests/drs:5981093", location: "Harvard University"},
-             manifesturi: lien, location:"Sion"
+
+             {manifestUri: lien, location:"Sion", slotAddress: "row1.column1", viewType: "ImageView"}
          ],
          windowObjects: [],
-         annotationEndpoint: {
-           name:"Local Storage",
-           module: "LocalStorageEndpoint" }
+
        });
      });
     </script>
