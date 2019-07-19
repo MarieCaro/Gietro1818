@@ -192,7 +192,7 @@ def resultatavance():
 
 @app.route('/iiif/<url>')
 def visionneuse(url):
-    return render_template('pages/example.html')
+    return render_template('pages/example.html', url=url)
 
 
 @app.route('/index/personne')
