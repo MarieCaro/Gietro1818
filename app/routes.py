@@ -1,8 +1,9 @@
 from flask import render_template, url_for, request
-from app import app
+from app import app, api
 from .models import Personne, Lieu, Type, Image
 from sqlalchemy import or_
 from config import RESULTATS_PAR_PAGE, AUTRES_RESULTATS
+
 
 
 # Pour les pages qui n'affichent que le contenu qu'elles ont, la route ne prend pas de paramètres
@@ -11,7 +12,7 @@ def accueil():
     return render_template('pages/accueil.html')
 
 
-@app.route('/course_contre_la montre')
+@app.route('/course_contre_la_montre')
 def course():
     return render_template('pages/course.html')
 
@@ -61,7 +62,8 @@ def generosite():
 @app.route("/notice/<int:personne_id>")
 def notice(personne_id):
     noticep = Personne.query.get(personne_id)
-    return render_template("pages/personne.html", noticep=noticep)
+    url = noticep.lettre
+    return render_template("pages/personne.html", noticep=noticep, url=url)
 
 
 # Pour les fiches de personnes auxquelles on accède par la recherche, on donne comme paramètre l'id de la db Lieu
@@ -93,29 +95,31 @@ def search_results():
     places = []
     autres_results = []
 
-    mots = motclef.split()
+    if motclef:
+        mots = motclef.split()
 
-    for mot in mots:
-        results = Personne.query.filter(or_(
-            Personne.nom.like("%{}%".format(mot)),
-            Personne.prenom.like("%{}%".format(mot)),
-        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
-        places = Lieu.query.filter(
-            Lieu.nom.like("%{}%".format(mot))).order_by(Lieu.nom.asc()).paginate(
-            page=page, per_page=RESULTATS_PAR_PAGE)
-        autres_results = Personne.query.filter(or_(Personne.age.like("%{}%".format(mot)),
-            Personne.travail.like("%{}%".format(mot)),
-            Personne.fonction.like("%{}%".format(mot)),
-            Personne.donnees_biographiques.like("%{}%".format(mot)),
-            Personne.informations_complementaires.like("%{}%".format(mot)),
-            Personne.levee_de_corps.like("%{}%".format(mot)),
-            Personne.mission_debacle.like("%{}%".format(mot)),
-        )).order_by(Personne.nom.asc()).paginate(page=page, per_page=AUTRES_RESULTATS)
+        for mot in mots:
+            results = Personne.query.filter(or_(
+                Personne.nom.like("%{}%".format(mot)),
+                Personne.prenom.like("%{}%".format(mot)),
+            )).order_by(Personne.nom.asc()).paginate(page=page, per_page=RESULTATS_PAR_PAGE)
+            places = Lieu.query.filter(
+                Lieu.nom.like("%{}%".format(mot))).order_by(Lieu.nom.asc()).paginate(
+                page=page, per_page=RESULTATS_PAR_PAGE)
+            autres_results = Personne.query.filter(or_(Personne.age.like("%{}%".format(mot)),
+                Personne.travail.like("%{}%".format(mot)),
+                Personne.fonction.like("%{}%".format(mot)),
+                Personne.donnees_biographiques.like("%{}%".format(mot)),
+                Personne.informations_complementaires.like("%{}%".format(mot)),
+                Personne.levee_de_corps.like("%{}%".format(mot)),
+                Personne.mission_debacle.like("%{}%".format(mot)),
+            )).order_by(Personne.nom.asc()).paginate(page=page, per_page=AUTRES_RESULTATS)
 
-    titre = "Recherche"
+        titre = "Recherche"
 
-
-    return render_template("pages/resultat.html", results=results, autres_results=autres_results, places=places, titre=titre)
+        return render_template("pages/resultat.html", results=results, autres_results=autres_results, places=places, titre=titre)
+    else:
+        return render_template('pages/accueil.html')
 
 
 # La recherche peut être spécifiquement dans certains champs de la db
@@ -190,19 +194,26 @@ def resultatavance():
     return render_template('pages/resultatavance.html', resultats=resultats, titre=titre, motclef=motclef, nom=nom,
                            prenom=prenom, de=de, domicile=domicile, role=role, lieu=lieu, village=village)
 
+
 @app.route('/iiif/<url>')
 def visionneuse(url):
     return render_template('pages/example.html', url=url)
 
 
-@app.route('/index/personne')
+@app.route('/index/personnes')
 def indexp():
     personne = Personne.query.order_by(Personne.nom.asc()).all()
     return render_template('pages/indexp.html', personne=personne)
 
-@app.route('/index/lieu')
+
+@app.route('/index/lieux')
 def indexl():
     lieu = Lieu.query.order_by(Lieu.nom.asc()).all()
     return render_template('pages/indexl.html', lieu=lieu)
+
+
+@app.route('/index/documents')
+def indexd():
+    return render_template('pages/indexd.html')
 
 
