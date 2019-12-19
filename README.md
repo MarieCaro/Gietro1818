@@ -28,7 +28,7 @@ Dans un nouveau terminal déplacez-vous dans le dossier Gietro1818/app/manifest.
 Activer le serveur de présentation avec la ligne de commande :
 `python server.py`
 
-#Pour réaliser ce site
+# Pour réaliser ce site
 
 Le CSS est réalisé à partir de Bootstrap: https://getbootstrap.com/
 
