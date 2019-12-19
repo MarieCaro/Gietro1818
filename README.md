@@ -1,6 +1,6 @@
 # Gietro1818
-Mise en ligne d'un site sur la débâcle du Giétro dans le cadre du stage obligatoire de M2 TNAH de l'Ecole des Chartes aux Archives de l'Etat du Valais.
-Sous la direction de MM. Clérice et Dubois.
+Mise en ligne d'un site sur la débâcle du Giétro par les Archives de l'Etat du Valais.
+
 
 ## Comment installer le site ?
 
@@ -28,6 +28,3 @@ Dans un nouveau terminal déplacez-vous dans le dossier Gietro1818/app/manifest.
 Activer le serveur de présentation avec la ligne de commande :
 `python server.py`
 
-Au vu du nombre d’images qui sera mise en ligne, j’ai fait une petite sélection qui sert d’exemple à ce que sera le site.
-Pour voir une image pour une personne, rendez-vous sur la page de la notice d’Ignace Venetz
-Pour ouvrir un document d’archive, la note de bas de page de la page « Course contre la montre »
