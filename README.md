@@ -28,3 +28,13 @@ Dans un nouveau terminal déplacez-vous dans le dossier Gietro1818/app/manifest.
 Activer le serveur de présentation avec la ligne de commande :
 `python server.py`
 
+#Pour réaliser ce site
+
+Le CSS est réalisé à partir de Bootstrap: https://getbootstrap.com/
+
+La frise chronologique a été adapté de : https://github.com/CodyHouse/horizontal-timeline
+
+La visionneuse d'image est Mirador:https://projectmirador.org/
+
+Le serveur d'image utilisé est Cantaloupe: https://cantaloupe-project.github.io/
+
