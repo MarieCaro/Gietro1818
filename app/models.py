@@ -1,6 +1,4 @@
 from app import db
-from flask import url_for
-import json
 
 
 class Lieu(db.Model):
@@ -12,6 +10,7 @@ class Lieu(db.Model):
     nombre_morts= db.Column(db.TEXT)
     animaux_emportes = db.Column(db.TEXT)
     pertinent = db.Column(db.Integer)
+    coordonnees = db.Column(db.Integer)
 
 
 class Type(db.Model):
@@ -43,6 +42,30 @@ class Personne(db.Model):
     lieu_de_domicile = db.relationship("Lieu", foreign_keys=domicile)
     image = db.Column(db.TEXT)
     legende = db.Column(db.TEXT)
+    document1 = db.Column(db.TEXT)
+    document1url = db.Column(db.TEXT)
+    document2 = db.Column(db.TEXT)
+    document2url = db.Column(db.TEXT)
+    document3 = db.Column(db.TEXT)
+    document3url = db.Column(db.TEXT)
+    document4 = db.Column(db.TEXT)
+    document4url = db.Column(db.TEXT)
+    document5 = db.Column(db.TEXT)
+    document5url = db.Column(db.TEXT)
+    document6 = db.Column(db.TEXT)
+    document6url = db.Column(db.TEXT)
+    document7 = db.Column(db.TEXT)
+    document7url = db.Column(db.TEXT)
+    document8 = db.Column(db.TEXT)
+    document8url = db.Column(db.TEXT)
+    document9 = db.Column(db.TEXT)
+    document9url = db.Column(db.TEXT)
+    document10 = db.Column(db.TEXT)
+    document10url = db.Column(db.TEXT)
+    document11 = db.Column(db.TEXT)
+    document11url = db.Column(db.TEXT)
+    source = db.Column(db.TEXT)
+    lettre = db.Column(db.TEXT)
 
 
 class Image(db.Model):
@@ -53,6 +76,6 @@ class Image(db.Model):
     emetteur = db.Column(db.TEXT)
     destinataire = db.Column(db.TEXT)
     date = db.Column(db.TEXT)
-    image_lieu = db.Column(db.TEXT)  # missed opportunity? A réfléchir.
+    image_lieu = db.Column(db.TEXT)
     sujet = db.Column(db.TEXT)
     url = db.Column(db.TEXT)
