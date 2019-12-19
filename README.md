@@ -14,7 +14,7 @@ Pour lancer l’application, taper les commandes
 ```FLASK_APP=code.py```
 ```flask run```
 
-## Comment installer le serveur d’image et le serveur de manifeste ?
+## Comment installer le serveur d’images et le serveur de manifestes ?
 
 Pour faire fonctionner l’API des images, il faut télécharger Cantaloupe et suivre les directives pour son installation. Vous trouverez les informations ici sur leur site: https://cantaloupe-project.github.io/
 
@@ -28,7 +28,7 @@ Dans un nouveau terminal déplacez-vous dans le dossier Gietro1818/app/manifest.
 Activer le serveur de présentation avec la ligne de commande :
 `python server.py`
 
-# Pour réaliser ce site
+## Pour réaliser ce site
 
 Le CSS est réalisé à partir de Bootstrap: https://getbootstrap.com/
 
