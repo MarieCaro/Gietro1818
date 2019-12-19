@@ -19,7 +19,9 @@
     <script src="{{url_for('static', filename='mirador/mirador.min.js')}}"></script>
     <script type="text/javascript">
 
-    var lien = "http://localhost:8000/{{url}}.json"
+
+      var lien = "http://localhost:8000/manifest/{{url}}.json";
+
 
      $(function() {
        myMiradorInstance = Mirador({
@@ -28,9 +30,10 @@
          buildPath: "mirador/",
          data: [
 
-             {manifestUri: lien, location:"Sion", slotAddress: "row1.column1", viewType: "ImageView"}
+             {manifestUri: lien, location:"Sion", viewType: "ImageView"},
          ],
-         windowObjects: [],
+         windowObjects: [{
+  loadedManifest: lien}]
 
        });
      });

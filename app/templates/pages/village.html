@@ -7,9 +7,20 @@
         <h4> {{ noticev.nom }}</h4>
         <div class="row">
             <div class ="col-lg-4" >
+                <div id="mapid">
+<script> var map = L.map('mapid').setView([{{noticev.coordonnees}}], 13);
 
-                <iframe width="400" height="300" src="{{url_for('carte')}}"></iframe>
-                <p><a href="{{url_for('carte')}}">Afficher la carte en plein écran</a></p>
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+
+                    L.marker([{{noticev.coordonnees}}]).addTo(map)
+                    .bindPopup('{{noticev.nom}}')
+                    .openPopup();</script>
+
+                </div>
+
+                <p><a href="{{url_for('carte')}}" target="_blank">Afficher la carte en plein écran</a></p>
             </div>
                  <div class ="col-lg-8" >
                      <dl>

@@ -52,12 +52,12 @@
                              <dt></dt>
                          {% endif %}
                          {% if noticep.levee_de_corps != None %}
-                            <dt>Levée de corps</dt><dd>{{noticep.levee_de_corps}}</dd>
+                         <dt>Levée de corps</dt><dd><i>{{noticep.levee_de_corps}}</i></dd>
                          {% else %}
                              <dt></dt>
                          {% endif %}
                          {% if noticep.informations_complementaires != None %}
-                            <dt>Informations complémentaires</dt><dd>{{noticep.informations_complementaires}}</dd>
+                         <dt>Informations complémentaires</dt><dd><i>{{noticep.informations_complementaires}}</i></dd>
                          {% else %}
                              <dt></dt>
                          {% endif %}
@@ -67,7 +67,8 @@
                              <dt></dt>
                          {% endif %}
                          {% if noticep.correspondance!= None %}
-                            <dt>Extrait de la correspondance de {{noticep.prenom}} {{noticep.nom}}</dt><dd>{{noticep.correspondance}}</dd>
+                         <dt>Extrait de la correspondance de {{noticep.prenom}} {{noticep.nom}}</dt><dd><i>{{noticep.correspondance}}</i></dd>
+                         <dd><a href="{{url_for('visionneuse', url=url)}}">Voir la lettre</a></dd>
                          {% else %}
                              <dt></dt>
                          {% endif %}
@@ -84,10 +85,77 @@
                          {% endif %}
 
                          {% if noticep.type.typeId == 4 %}
-                            <dt>Voir le PV de la levée de corps</dt><dd></dd> // A ajouter
+                         <dt>Procès-verbal de la levée de corps</dt>
+                         <dd><a href="{{url_for('visionneuse', url='AEV-3-DTP-28-2-18')}}" target="blank">
+                             AEV, 3 DTP 28.2.18</a></dd>
                          {% else %}
                              <dt></dt>
                          {% endif %}
+
+                         {% if noticep.document1 != None %}
+                         <dt>Documents d'archives</dt><dd><a href="{{url_for('visionneuse', url='{{noticep.document1url}}')}}" target="blank">{{noticep.document1}}</a></dd>
+                              {% if noticep.document2 != None %}
+                         <dd><a href="{{url_for('visionneuse', url='{{noticep.document2url}}')}}" target="blank">{{noticep.document2}}</a></dd>
+                                        {% if noticep.document3 != None %}
+                                        <dd><a href="{{url_for('visionneuse', url='{{noticep.document3url}}')}}" target="blank">{{noticep.document3}}</a></dd>
+                                              {% if noticep.document4 != None %}
+                                                <dd><a href="{{url_for('visionneuse', url='{{noticep.document4url}}')}}" target="blank">{{noticep.document4}}</a></dd>
+                                                    {% if noticep.document5 != None %}
+                                                <dd><a href="{{url_for('visionneuse', url='{{noticep.document5url}}')}}" target="blank">{{noticep.document5}}</a></dd>
+                                                        {% if noticep.document6 != None %}
+                                                <dd><a href="{{url_for('visionneuse', url='{{noticep.document6url}}')}}" target="blank">{{noticep.document6}}</a></dd>
+                                                            {% if noticep.document7 != None %}
+                                                <dd><a href="{{url_for('visionneuse', url='{{noticep.document7url}}')}}" target="blank">{{noticep.document7}}</a></dd>
+                                                                {% if noticep.document8 != None %}
+                                                <dd><a href="{{url_for('visionneuse', url='{{noticep.document8url}}')}}" target="blank">{{noticep.document8}}</a></dd>
+                                                                    {% if noticep.document9 != None %}
+                                                <dd><a href="{{url_for('visionneuse', url='{{noticep.document9url}}')}}" target="blank">{{noticep.document9}}</a></dd>
+                                                                        {% if noticep.document10 != None %}
+                                                <dd><a href="{{url_for('visionneuse', url='{{noticep.document10url}}')}}" target="blank">{{noticep.document10}}</a></dd>
+                                                                            {% if noticep.document11 != None %}
+                                                <dd><a href="{{url_for('visionneuse', url='{{noticep.document11url}}')}}" target="blank">{{noticep.document11}}</a></dd>
+                                                                            {% else %}
+                                                                            <dt></dt>
+                                                                            {% endif %}
+                                                                        {% else %}
+                                                                        <dt></dt>
+                                                                        {% endif %}
+                                                                    {% else %}
+                                                                    <dt></dt>
+                                                                    {% endif %}
+                                                                {% else %}
+                                                               <dt></dt>
+                                                                {% endif %}
+                                                            {% else %}
+                                                            <dt></dt>
+                                                            {% endif %}
+                                                        {% else %}
+                                                        <dt></dt>
+                                                        {% endif %}
+                                                    {% else %}
+                                                    <dt></dt>
+                                                    {% endif %}
+                                                {% else %}
+                                                <dt></dt>
+                                                {% endif %}
+                                            {% else %}
+                                            <dt></dt>
+                                            {% endif %}
+                                        {% else %}
+                                        <dt></dt>
+                                        {% endif %}
+                                    {% else %}
+                                    <dt></dt>
+                                    {% endif %}
+
+                         {% if noticep.source != None %}
+                         <dt>Sources</dt>
+                         <dd>{{noticep.source}}</dd>
+                         {% else %}
+                                        <dt></dt>
+                         {% endif %}
+
+
 
                      </dl>
                  </div>
