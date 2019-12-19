@@ -46,6 +46,19 @@ for row in list:
       "value": \""""+row[7]+"""\"
     }
   ],
+   "service": [
+    {
+      "@context": "http://iiif.io/api/search/1/context.json",
+      "@id": "",
+      "profile": "http://iiif.io/api/search/1/search",
+      "label": "Search within this thing",
+      "service": {
+        "@id": "",
+        "profile": "http://iiif.io/api/search/1/autocomplete",
+        "label": "Get suggested words"
+      }
+    }
+  ],
   "attribution": "Archives de l'Etat du Valais",
   "sequences": [
     {
@@ -60,7 +73,7 @@ for row in list:
                 "height": 8599,
                 "images":[{
                         "@type": "oa:Annotation",
-                        "motivavtion": "sc:painting",
+                        "motivation": "sc:painting",
                         "on": "http://localhost:8182/iiif/2/CH-""" + row[9] + """/canvas/1",
                         "resource": {
                                     "@type": "dctypes:Image",
@@ -72,7 +85,14 @@ for row in list:
                                                 }
                                     }
                         }]
-                },
+                }
+                }
+                ]
+    
+    }]
+    }""")
+    if row[10] is not None:
+        nouveau_fichier.write("""
                 {"@type": "sc:Canvas",
                 "@id": "http://localhost:8182/iiif/2/CH-""" + row[10] + """/canvas/1",
                 "label": "cover",
@@ -80,7 +100,7 @@ for row in list:
                 "height": 8599,
                 "images":[{
                         "@type": "oa:Annotation",
-                        "motivavtion": "sc:painting",
+                        "motivation": "sc:painting",
                         "on": "http://localhost:8182/iiif/2/CH-""" + row[10] + """/canvas/1",
                         "resource": {
                                     "@type": "dctypes:Image",
@@ -92,7 +112,9 @@ for row in list:
                                                 }
                                     }
                         }]
-                },
+                }""")
+        if row[11] is not None:
+            nouveau_fichier.write(""",
                   {"@type": "sc:Canvas",
                 "@id": "http://localhost:8182/iiif/2/CH-""" + row[11] + """/canvas/1",
                 "label": "cover",
@@ -100,7 +122,7 @@ for row in list:
                 "height": 8599,
                 "images":[{
                         "@type": "oa:Annotation",
-                        "motivavtion": "sc:painting",
+                        "motivation": "sc:painting",
                         "on": "http://localhost:8182/iiif/2/CH-""" + row[11] + """/canvas/1",
                         "resource": {
                                     "@type": "dctypes:Image",
@@ -112,7 +134,9 @@ for row in list:
                                                 }
                                     }
                         }]
-                },
+                }""")
+            if row[12] is not None:
+                nouveau_fichier.write ("""
                   {"@type": "sc:Canvas",
                 "@id": "http://localhost:8182/iiif/2/CH-""" + row[12] + """/canvas/1",
                 "label": "cover",
@@ -120,7 +144,7 @@ for row in list:
                 "height": 8599,
                 "images":[{
                         "@type": "oa:Annotation",
-                        "motivavtion": "sc:painting",
+                        "motivation": "sc:painting",
                         "on": "http://localhost:8182/iiif/2/CH-""" + row[12] + """/canvas/1",
                         "resource": {
                                     "@type": "dctypes:Image",
@@ -131,11 +155,10 @@ for row in list:
                                                 "profile": "http://iiif.io/api/image/2/level2.json"
                                                 }
                                     }
-                        }]
-                }
-                ]
-    
-    }]
-    }""")
+                        }]""")
+        else:
+            pass
+    else:
+        pass
     nouveau_fichier.close()
 
