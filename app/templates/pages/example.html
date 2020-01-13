@@ -28,13 +28,9 @@
          id: "viewer",
          layout: "1x1",
          buildPath: "mirador/",
-         data: [
-
-             {manifestUri: lien, location:"Sion", viewType: "ImageView"},
-         ],
-         windowObjects: [{
-  loadedManifest: lien}]
-
+         data: [{manifestUri: lien, location:"Sion", viewType: "ImageView"}],
+         windowObjects: [{loadedManifest: lien}],
+         sidePanelOptions : {"searchTabAvailable": true},
        });
      });
     </script>
